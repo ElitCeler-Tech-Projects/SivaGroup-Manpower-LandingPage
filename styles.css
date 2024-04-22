@@ -350,8 +350,8 @@ body {
   padding: 0.8rem;
 }
 
-.app__lassistory > h2 {
-  font-size: 2.4rem;
+.lassistory__center > h2 {
+  font-size: 1.5rem;
   text-align: left;
   font-weight: 600;
 }
