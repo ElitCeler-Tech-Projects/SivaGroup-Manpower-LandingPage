@@ -650,8 +650,8 @@ body {
   padding-bottom: 0.4rem;
 }
 
-.footer__2 a,
-.footer__3 a {
+.footer__2 a, .footer__2 span,
+.footer__3 a, .footer__3 span {
   text-decoration: none;
   color: #ddd;
   font-size: 1rem;
@@ -673,8 +673,8 @@ body {
   height: auto;
 }
 
-.footer__2 a::after,
-.footer__3 a::after {
+.footer__2 a::after, .footer__2 span::after,
+.footer__3 a::after, .footer__3 span::after {
   content: "";
   position: absolute;
   bottom: -4px;
@@ -707,8 +707,8 @@ body {
   }
 
   .nav__menu a:is(:hover, :focus-visible)::after,
-  .footer__2 a:is(:hover, :focus-visible)::after,
-  .footer__3 a:is(:hover, :focus-visible)::after {
+  .footer__2 a:is(:hover, :focus-visible)::after, .footer__2 span:is(:hover, :focus-visible)::after, 
+  .footer__3 a:is(:hover, :focus-visible)::after, .footer__3 span:is(:hover, :focus-visible)::after {
     width: 100%;
   }
 
