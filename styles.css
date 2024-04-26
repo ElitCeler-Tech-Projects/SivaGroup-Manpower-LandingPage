@@ -6,6 +6,9 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+}
+
+img {
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;

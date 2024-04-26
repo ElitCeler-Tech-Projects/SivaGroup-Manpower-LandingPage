@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Siva Group | Landing Page</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="popup.css">
 </head>
 <body>
     
@@ -16,7 +17,7 @@
             <a onclick="toggleMenuBar()" href="#aboutus" title="About Us">About Us</a>
             <a onclick="toggleMenuBar()" href="#services" title="Our Services">Our Services</a>
             <a onclick="toggleMenuBar()" href="#company" title="Jobs">Jobs</a>
-            <a onclick="toggleMenuBar()" href="#contact" title="Contact">Contact</a>
+            <a onclick="toggleMenuBar()" href="#apply" title="Apply Job">Apply Job</a>
         </div>
         <button type="button" title="Toggle Menu" onclick="toggleMenuBar()"><ion-icon name="menu"></ion-icon></button>
     </nav>
@@ -31,7 +32,7 @@
         <img src="/assets/HeroGrp.svg" alt="Hero">
         <div>
             <p>One-stop Solution for your Services</p>
-            <button type="button" title="Connect With Us">Connect With Us</button>            
+            <button type="button" onclick="window.location.href='#apply'" title="Connect With Us">Connect With Us</button>            
         </div>
     </section>
 
@@ -124,11 +125,11 @@
 
     <!-- Section 7 -->
 
-    <section class="app__jobs" id="jobs">
+    <section class="app__jobs" id="apply">
         <div class="jobs__show">
             <img src="/assets/Job.svg" alt="Apply Jobs">
             <h3>Wanna be a part of Siva Group ?</h3>
-            <button type="button" title="Apply">Apply Now</button>
+            <button type="button" onclick="togglePopup()" title="Apply">Apply Now</button>
         </div>
     </section>
 
@@ -175,6 +176,213 @@
     </footer>
 
     <!-- Footer -->
+
+    <!-- Apply Job Popup -->
+
+    <aside class="apply__popup" >
+
+        <div class="popup">
+
+            <div class="popup__head">
+                <h2>Apply Now</h2>
+                <button type="button" onclick="togglePopup()" title="Close"><ion-icon name="close"></ion-icon></button>
+            </div>
+            
+            <form class="popup__form">
+                <div class="form__input">
+                    <label for="fullName">Full Name<span>*</span></label>
+                    <input required type="text" placeholder="Enter Full Name" name="fullName" id="fullName">
+                </div>
+                <div class="form__input">
+                    <label for="age">Age<span>*</span></label>
+                    <input required type="number" pattern="^[0-9+\s]*$" placeholder="Enter Age" name="age" id="age" min="18" max="99">
+                </div>
+                <div class="form__input">
+                    <label for="email">Email<span>*</span></label>
+                    <input required type="email" placeholder="Enter Email Address" name="email" id="email">
+                </div>
+                <div class="form__input">
+                    <label for="phoneNumber">Phone Number<span>*</span></label>
+                    <input required type="text" pattern="^[0-9+\s]*$" placeholder="Enter Phone Number" name="phoneNumber" id="phoneNumber">
+                </div>
+                <div class="form__input">
+                    <label for="whatsappNumber">WhatsApp Number<span>*</span></label>
+                    <input required type="text" pattern="^[0-9+\s]*$" placeholder="Enter WhatsApp Number" name="whatsappNumber" id="whatsappNumber">
+                </div>
+                <div class="form__input">
+                    <label for="alternateNumber">Alternate Number</label>
+                    <input type="text" pattern="^[0-9+\s]*$" placeholder="Enter Alternate Number" name="alternateNumber" id="alternateNumber">
+                </div>
+                <div class="form__input">
+                    <label for="permanentAddress">Permanent Address<span>*</span></label>
+                    <input required type="text" placeholder="Enter Permanent Address" name="permanentAddress" id="permanentAddress">
+                </div>
+                <div class="form__input">
+                    <label for="currentAddress">Current Address<span>*</span></label>
+                    <input required type="text" placeholder="Enter Current Address" name="currentAddress" id="currentAddress">
+                </div>
+                <div class="form__input">
+                    <label for="workExperience">Working Experience<span>*</span></label>
+                    <input required type="text" placeholder="Enter Working Experience" name="workExperience" id="workExperience">
+                </div>
+                <div class="form__input">
+                    <label for="studyQualification">Qualification</label>
+                    <select name="studyQualification" id="studyQualification">
+                        <option value="School">School</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Bachelore of Technologo (B-tech)">Bachelore of Technologo (B-tech)</option>
+                        <option value="Degree">Degree</option>
+                        <option value="Diploma">Diploma</option>
+                    </select>
+                </div>
+                <div class="form__input">
+                    <label for="language">Language Spoken</label>
+                    <select name="language" id="language">
+                        <option value="Only Telugu">Only Telugu</option>
+                        <option value="Only Hindi">Only Hindi</option>
+                        <option value="Only English">Only English</option>
+                        <option value="Telugu, Hindi">Telugu, Hindi</option>
+                        <option value="Telugu, English">Telugu, English</option>
+                        <option value="Hindi, English">Hindi, English</option>
+                        <option value="Telugu, Hindi, English">Telugu, Hindi, English</option>
+                    </select>
+                </div>
+                <div class="form__input">
+                    <label for="payment">Payment</label>
+                    <select name="payment" id="payment">
+                        <option value="5 Hours (Rs 400/- Fixed)">5 Hours (Rs 400/- Fixed)</option>
+                        <option value="9 Hours (Rs 750/- Fixed)">9 Hours (Rs 750/- Fixed)</option>
+                    </select>
+                </div>
+                <div class="form__input">
+                    <label for="dutyHours">Duty Hours</label>
+                    <select name="dutyHours" id="dutyHours">
+                        <option value="1 Hour">1 Hour</option>
+                        <option value="2 Hours">2 Hours</option>
+                        <option value="3 Hours">3 Hours</option>
+                        <option value="4 Hours">4 Hours</option>
+                        <option value="5 Hours">5 Hours</option>
+                        <option value="6 Hours">6 Hours</option>
+                        <option value="7 Hours">7 Hours</option>
+                        <option value="8 Hours">8 Hours</option>
+                        <option value="9 Hours">9 Hours</option>
+                        <option value="10 Hours">10 Hours</option>
+                    </select>
+                </div>
+                <h3>Bank Details</h3>
+                <div class="form__input">
+                    <label for="bankName">Bank Name<span>*</span></label>
+                    <input required type="text" placeholder="Enter Bank Name" name="bankName" id="bankName">
+                </div>
+                <div class="form__input">
+                    <label for="accountHolderName">Account Holder Name<span>*</span></label>
+                    <input required type="text" placeholder="Enter Account Holder Name" name="accountHolderName" id="accountHolderName">
+                </div>
+                <div class="form__input">
+                    <label for="accountNumber">Account Number<span>*</span></label>
+                    <input required type="text" pattern="^[0-9+\s]*$" placeholder="Enter Account Number" name="accountNumber" id="accountNumber">
+                </div>
+                <div class="form__input">
+                    <label for="IFSCCode">IFSC Code<span>*</span></label>
+                    <input required type="text" placeholder="Enter IFSC Code" name="IFSCCode" id="IFSCCode">
+                </div>
+                <div class="form__input">
+                    <label for="upiId">UPI ID<span>*</span></label>
+                    <input required type="text" placeholder="Enter UPI ID" name="upiId" id="upiId">
+                </div>
+                <h3>Identity Upload</h3>
+                <div class="more__input">
+                    <div class="form__upload">
+                        <label id="aadhar" for="aadharCard">
+                            <ion-icon name="cloud-upload-outline"></ion-icon>
+                            <p>Upload Aadhar Card</p>
+                            <p>(PNG, JPEG, SVG, PDF only)</p>
+                            <p id="msg__show">1 File Selected!</p>
+                        </label>
+                        <input type="file" onchange="selectedFile(event, 'aadhar')" id="aadharCard" name="aadharCard" required aria-required="true" accept=".jpg, .png, .svg, .jpeg, .pdf">
+                    </div>
+                    <div class="form__upload">
+                        <label id="pan" for="panCard">
+                            <ion-icon name="cloud-upload-outline"></ion-icon>
+                            <p>Upload PAN Card</p>
+                            <p>(PNG, JPEG, SVG, PDF only)</p>
+                            <p id="msg__show">1 File Selected!</p>
+                        </label>
+                        <input type="file" id="panCard" onchange="selectedFile(event, 'pan')" name="panCard" required aria-required="true" accept=".jpg, .png, .svg, .jpeg, .pdf">
+                    </div>
+                </div>
+                <h3>With Uniform Pics</h3>
+                <div class="more__input">
+                    <div class="form__upload">
+                        <label id="uni1" for="uniformPic1">
+                            <ion-icon name="cloud-upload-outline"></ion-icon>
+                            <p>Upload 1<sup>st</sup> Picture</p>
+                            <p>(PNG, JPEG, SVG only)</p>
+                            <p id="msg__show">1 File Selected!</p>
+                        </label>
+                        <input type="file" id="uniformPic1" onchange="selectedFile(event, 'uni1')" name="uniformPic1" required aria-required="true" accept=".jpg, .png, .svg, .jpeg">
+                    </div>
+                    <div class="form__upload">
+                        <label id="uni2" for="uniformPic2">
+                            <ion-icon name="cloud-upload-outline"></ion-icon>
+                            <p>Upload 2<sup>nd</sup> Picture</p>
+                            <p>(PNG, JPEG, SVG only)</p>
+                            <p id="msg__show">1 File Selected!</p>
+                        </label>
+                        <input type="file" id="uniformPic2" onchange="selectedFile(event, 'uni2')" name="uniformPic2" required aria-required="true" accept=".jpg, .png, .svg, .jpeg">
+                    </div>
+                    <div class="form__upload">
+                        <label id="uni3" for="uniformPic3">
+                            <ion-icon name="cloud-upload-outline"></ion-icon>
+                            <p>Upload 3<sup>rd</sup> Picture</p>
+                            <p>(PNG, JPEG, SVG only)</p>
+                            <p id="msg__show">1 File Selected!</p>
+                        </label>
+                        <input type="file" id="uniformPic3" name="uniformPic3" onchange="selectedFile(event, 'uni3')" required aria-required="true" accept=".jpg, .png, .svg, .jpeg">
+                    </div>
+                </div>
+                <h3>Without Uniform Pics</h3>
+                <div class="more__input">
+                    <div class="form__upload">
+                        <label id="wuni1" for="withoutUniformPic1">
+                            <ion-icon name="cloud-upload-outline"></ion-icon>
+                            <p>Upload 1<sup>st</sup> Picture</p>
+                            <p>(PNG, JPEG, SVG only)</p>
+                            <p id="msg__show">1 File Selected!</p>
+                        </label>
+                        <input type="file" onchange="selectedFile(event, 'wuni1')" id="withoutUniformPic1" name="withoutUniformPic1" required aria-required="true" accept=".jpg, .png, .svg, .jpeg">
+                    </div>
+                    <div class="form__upload">
+                        <label id="wuni2" for="withoutUniformPic2">
+                            <ion-icon name="cloud-upload-outline"></ion-icon>
+                            <p>Upload 2<sup>nd</sup> Picture</p>
+                            <p>(PNG, JPEG, SVG only)</p>
+                            <p id="msg__show">1 File Selected!</p>
+                        </label>
+                        <input type="file" onchange="selectedFile(event, 'wuni2')" id="withoutUniformPic2" name="withoutUniformPic2" required aria-required="true" accept=".jpg, .png, .svg, .jpeg">
+                    </div>
+                    <div class="form__upload">
+                        <label id="wuni3" for="withoutUniformPic3">
+                            <ion-icon name="cloud-upload-outline"></ion-icon>
+                            <p>Upload 3<sup>rd</sup> Picture</p>
+                            <p>(PNG, JPEG, SVG only)</p>
+                            <p id="msg__show">1 File Selected!</p>
+                        </label>
+                        <input type="file" onchange="selectedFile(event, 'wuni3')" id="withoutUniformPic3" name="withoutUniformPic3" required aria-required="true" accept=".jpg, .png, .svg, .jpeg">
+                    </div>
+                </div>
+
+                <div class="form__options">
+                    <button type="submit">Apply Now</button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </aside>
+
+    <!-- Apply Job Popup -->
 
     <!-- Scripts -->
 
@@ -291,6 +499,35 @@
         }, 2000);
 
         // Lassi Story
+
+        // Apply Job Popup
+
+        const popup = document.querySelector('.apply__popup');
+        const popupBox = document.querySelector('.popup');
+
+        function togglePopup() {
+            popup.classList.toggle('active');
+            document.body.classList.toggle('active__popup');
+        }
+
+        popup.addEventListener('mousedown', function(e) {
+            if (!e.target.classList.contains('popup') && !popupBox.contains(e.target)) {
+                popup.classList.remove('active');
+                document.body.classList.remove('active__popup');
+            }
+        })
+
+        function selectedFile(e, mainId) {
+
+            const msgPara = document.querySelector(`#${mainId} #msg__show`);
+            
+            if (e.target.files) {
+                const fileName = e.target.files[0]
+                msgPara.classList.add('show__selected');
+            }
+        }
+
+        // Apply Job Popup
 
     </script>
     
