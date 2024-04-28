@@ -16,7 +16,6 @@
         <div class="nav__menu">
             <a onclick="toggleMenuBar()" href="#aboutus" title="About Us">About Us</a>
             <a onclick="toggleMenuBar()" href="#services" title="Our Services">Our Services</a>
-            <a onclick="toggleMenuBar()" href="#company" title="Jobs">Jobs</a>
             <a onclick="toggleMenuBar()" href="#apply" title="Apply Job">Apply Job</a>
         </div>
         <button type="button" title="Toggle Menu" onclick="toggleMenuBar()"><ion-icon name="menu"></ion-icon></button>
@@ -159,8 +158,8 @@
                 <p>Our Product</p>
                 <span title="Lassi Story">Siva Group - Lassi Story</span>
                 <span title="Manpower Application">Manpower Application</span>
-                <span title="Dry Fruites">Dry Fruits</span>
-                <span title="Dehydrate Fruites">Dehydrate Fruites</span>
+                <span title="Dry Fruits">Dry Fruits</span>
+                <span title="Dehydrate Fruits">Dehydrate Fruits</span>
                 <span title="Spices">Spices</span>
             </div>
 
@@ -168,7 +167,7 @@
                 <p>Connect With Us</p>
                 <span>Hyderabad, India</span>
                 <a href="tel: +919966177034" title="Call"><ion-icon name="call"></ion-icon><span>+91 9966177034</span></a>
-                <a href="mailto: info@sivagroup.com" title="Mail"><ion-icon name="mail"></ion-icon><span>info@sivagroup.com</span></a>
+                <a href="mailto: info@sivagroup.com" title="Mail"><ion-icon name="mail"></ion-icon><span>sivagroup444@gmail.com</span></a>
             </div>
 
         </section>
@@ -250,23 +249,16 @@
                 <div class="form__input">
                     <label for="payment">Payment</label>
                     <select name="payment" id="payment">
-                        <option value="5 Hours (Rs 400/- Fixed)">5 Hours (Rs 400/- Fixed)</option>
-                        <option value="9 Hours (Rs 750/- Fixed)">9 Hours (Rs 750/- Fixed)</option>
+                        <option value="4 Hours (Rs 400/- Fixed)">4 Hours (Rs 400/- Fixed)</option>
+                        <option value="8 Hours (Rs 700/- Fixed)">8 Hours (Rs 700/- Fixed)</option>
                     </select>
                 </div>
                 <div class="form__input">
                     <label for="dutyHours">Duty Hours</label>
                     <select name="dutyHours" id="dutyHours">
-                        <option value="1 Hour">1 Hour</option>
-                        <option value="2 Hours">2 Hours</option>
-                        <option value="3 Hours">3 Hours</option>
                         <option value="4 Hours">4 Hours</option>
-                        <option value="5 Hours">5 Hours</option>
-                        <option value="6 Hours">6 Hours</option>
-                        <option value="7 Hours">7 Hours</option>
                         <option value="8 Hours">8 Hours</option>
-                        <option value="9 Hours">9 Hours</option>
-                        <option value="10 Hours">10 Hours</option>
+                        <option value="Both">Both</option>
                     </select>
                 </div>
                 <h3>Bank Details</h3>
@@ -293,22 +285,22 @@
                 <h3>Identity Upload</h3>
                 <div class="more__input">
                     <div class="form__upload">
-                        <label id="aadhar" for="aadharCard">
+                        <label id="idF" for="idCardF">
                             <ion-icon name="cloud-upload-outline"></ion-icon>
-                            <p>Upload Aadhar Card</p>
+                            <p>Upload Aadhar (or) Voter Card - Front</p>
                             <p>(PNG, JPEG, SVG, PDF only)</p>
                             <p id="msg__show">1 File Selected!</p>
                         </label>
-                        <input type="file" onchange="selectedFile(event, 'aadhar')" id="aadharCard" name="aadharCard" required aria-required="true" accept=".jpg, .png, .svg, .jpeg, .pdf">
+                        <input type="file" onchange="selectedFile(event, 'idF')" id="idCardF" name="idCard" required aria-required="true" accept=".jpg, .png, .svg, .jpeg, .pdf">
                     </div>
                     <div class="form__upload">
-                        <label id="pan" for="panCard">
+                        <label id="idB" for="idCardB">
                             <ion-icon name="cloud-upload-outline"></ion-icon>
-                            <p>Upload PAN Card</p>
+                            <p>Upload Aadhar (or) Voter Card - Back</p>
                             <p>(PNG, JPEG, SVG, PDF only)</p>
                             <p id="msg__show">1 File Selected!</p>
                         </label>
-                        <input type="file" id="panCard" onchange="selectedFile(event, 'pan')" name="panCard" required aria-required="true" accept=".jpg, .png, .svg, .jpeg, .pdf">
+                        <input type="file" id="idCardB" onchange="selectedFile(event, 'idB')" name="idCardB" required aria-required="true" accept=".jpg, .png, .svg, .jpeg, .pdf">
                     </div>
                 </div>
                 <h3>With Uniform Pics</h3>
