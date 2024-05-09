@@ -1,0 +1,391 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic");
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+img {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+}
+
+:root {
+  --c-mainBg: #ffffff;
+  --c-bgOverlay: #ffffff80;
+  --c-mainShadow: #23232310;
+  
+  --c-mainText: #000000;
+  --c-mainSec: #333333;
+
+  --c-iconColor: #23232370;
+  --c-mainBorder: #2323234d;
+
+  --c-primary: #1c5c5d;
+}
+
+/* @media (prefers-color-scheme: dark) {
+    :root {
+        --c-mainBg: #000000;
+        --c-bgOverlay: #00000080;
+        --c-mainShadow: #ebebeb3c;
+        
+        --c-mainText: #ffffff;
+        --c-mainSec: #e8e8e8;
+
+        --c-iconColor: #efefef70;
+        --c-mainBorder: #efefef70;
+      
+        --c-primary: #2f9799;
+    }
+
+    html {
+        color-scheme: dark;
+    }
+} */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--c-mainText);
+  background: linear-gradient(108.78deg, var(--c-bgOverlay) 49.46%, #1349574c 77.73%);
+}
+
+.register__section {
+    width: 100%;
+    min-height: 100vh;
+    padding: 0.8rem;
+    display: block;
+}
+
+.register__section.hide__section {
+    display: none;
+}
+
+.register__head {
+    width: max(600px, 45%);
+    max-width: 100%;
+    margin: 0.8rem auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1.2rem;
+    flex-direction: column;
+}
+
+.head__main {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.head__main h1 {
+    font-size: 1.6rem;
+    text-align: left;
+    font-weight: 600;
+    color: var(--c-mainText);
+}
+
+.head__main img {
+    width: 148px;
+    height: 100%;
+}
+
+.register__progress {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.8rem auto;
+}
+
+.register__progress span {
+    width: 32px;
+    height: 32px;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--c-mainBorder);
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.register__progress span.section__done {
+    background-color: var(--c-primary);
+    border-color: var(--c-primary);
+    color: var(--c-mainBg);
+}
+
+.register__progress .seperator {
+    width: 100%;
+    height: 2px;
+    background-color: var(--c-mainBorder);
+    transition: background-color 0.3s linear;
+}
+
+.register__progress span.section__done + .seperator {
+    background-color: var(--c-primary);
+}
+
+.register__head > h2 {
+    font-size: 1.24rem;
+    text-align: left;
+    color: var(--c-mainSec);
+    font-weight: 500;
+}
+
+.register__form, .register__confirm {
+    width: max(600px, 45%);
+    max-width: 100%;
+    margin: 0 auto;
+    margin-top: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem;
+    box-shadow: 0 0 8px 4px var(--c-mainShadow);
+    border-radius: 8px;
+    background-color: transparent;
+}
+
+.form__input {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.form__input label {
+    width: 100%;
+    font-size: 0.92rem;
+    color: var(--c-mainSec);
+    text-align: left;
+    font-weight: 400;
+}
+
+.form__input label span {
+    color: red;
+}
+
+.form__input input, .form__input select {
+    width: 100%;
+    padding: 0.6rem 0.6rem;
+    font-family: inherit;
+    border: 0.8px solid var(--c-mainBorder);
+    border-radius: 6px;
+    font-size: 0.98rem;
+    outline: none;
+    background-color: transparent;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.form__input input:focus, .form__input select:focus {
+    border-color: var(--c-primary);
+    color: var(--c-primary);
+}
+
+.form__input input:focus::placeholder, .form__input select:focus::placeholder {
+    transition: color 0.3s ease;
+    color: #2a9597a0;
+}
+
+.register__form h3 {
+    width: 100%;
+    font-size: 1.08rem;
+    text-align: left;
+    color: var(--c-primary);
+    font-weight: 500;
+    margin: 0.4rem auto;
+    padding: 0.2rem 0 0.4rem;
+    border-bottom: 0.4px solid var(--c-primary);
+}
+
+.more__input {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.form__upload {
+    width: 100%;
+    background-color: transparent;
+    border: 0.8px solid var(--c-mainBorder);
+    padding: 0.6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 8px;
+    gap: 0.8rem;
+    transition: border-color 0.3s ease;
+}
+
+.form__upload input {
+    overflow: hidden;
+    height: 0;
+    width: 0;
+    opacity: 0;
+}
+
+.form__upload label {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.7rem;
+    cursor: pointer;
+}
+
+.form__upload label ion-icon {
+    font-size: 2.4rem;
+    color: var(--c-iconColor);
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+.form__upload label p {
+    font-size: 1rem;
+    text-align: center;
+    color: var(--c-mainSec);
+    font-weight: 500;
+}
+
+.form__upload label p:nth-child(4) {
+    display: none;
+}
+
+.form__upload label p:nth-child(4).show__selected {
+    display: block;
+}
+
+.form__upload label p span {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--c-mainSec);
+}
+
+.form__upload p:nth-child(3) {
+    font-size: 0.88rem;
+    font-weight: 400;
+    text-align: center;
+    color: var(--c-mainSec);
+}
+
+.form__upload:focus-within {
+    border-color: var(--c-mainText);
+}
+
+.form__upload:focus-within ion-icon {
+    color: var(--c-mainText);
+}
+
+.form__options {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0.8rem;
+}
+
+.form__options button, .register__confirm a {
+    width: 100%;
+    text-align: center;
+    outline: none;
+    text-decoration: none;
+    padding: 0.5rem 0.7rem;
+    background-color: var(--c-primary);
+    color: var(--c-mainBg);
+    border: 1.2px solid var(--c-primary);
+    border-radius: 8px;
+    font-size: 0.96rem;
+    font-family: inherit;
+    cursor: pointer;
+    font-weight: 500;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.register__confirm {
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.register__confirm ion-icon, .register__confirm span {
+    font-size: 72px;
+    color: var(--c-mainText);
+}
+
+.register__confirm p {
+    font-size: 1.08rem;
+    text-align: left;
+    color: var(--c-mainText);
+    font-weight: 400;
+}
+
+.register__confirm > p span {
+    font-weight: 600;
+    font-size: 1.08rem;
+}
+
+.register__confirm a {
+    width: auto;
+}
+
+.form__options button:disabled {
+    background-color: transparent;
+    border-color: var(--c-primary);
+    cursor: not-allowed;
+}
+
+.btnLoader {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: inline-block;
+    border-top: 3px solid var(--c-primary);
+    border-right: 3px solid transparent;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+  
+@keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+}
+
+@media (pointer: fine) and (hover: hover) {
+
+    .form__options button:is(:hover, :focus-visible), #popup2 a:is(:hover, :focus-visible), .register__confirm a:is(:hover, :focus-visible) {
+        color: var(--c-primary);
+        background-color: transparent;
+    }
+}
+
+@media all and (max-width: 500px) {
+    .head__main {
+        flex-direction: column-reverse;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+}

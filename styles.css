@@ -20,7 +20,7 @@ img {
   --c-mainText: #000000;
   --c-mainSec: #333333;
 
-  --c-primary: #2d9596;
+  --c-primary: #1c5c5d;
 }
 
 html {
@@ -29,7 +29,7 @@ html {
 
 body {
   color: var(--c-mainText);
-  background: linear-gradient(108.78deg, #ffffff80 49.46%, #14789128 77.73%);
+  background: linear-gradient(108.78deg, #ffffff80 49.46%, #1349574c 77.73%);
 }
 
 .landing__main {
@@ -496,6 +496,7 @@ body {
 
 .app__founder img {
   width: 200px;
+  max-width: 100%;
   object-fit: cover;
   border-radius: 12px;
   box-shadow: 0 0 4px 1px #23232320;
@@ -798,10 +799,27 @@ body {
     width: 100%;
   }
 
+  .app__founder {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+  }
+
+  .founder__content {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .founder__content h2, .founder__content p {
+    text-align: center;
+  }
+
   .app__founder > img {
-    width: 240px;
+    width: 400px;
+    max-width: 100%;
     height: auto;
     aspect-ratio: 1/1.2;
+    object-position: center;
   }
 }
 
