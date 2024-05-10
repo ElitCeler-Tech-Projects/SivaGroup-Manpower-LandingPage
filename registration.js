@@ -259,9 +259,10 @@ window.addEventListener('load', () => {
         createToast('Verifying email...');
         confirmIconBox.innerHTML = '<span class="confirmLoader"></span>';
         emailVerification(confirmation).then((response) => {
-            const {message, token} = response;
+            const {message, token, professional} = response;
             if (message === 'Email Verified') {
                 createToast('Email Verified');
+                localStorage.setItem('__sivagroup__registerUserId', professional.id);
                 localStorage.setItem('__sivagroup__registertoken', token);
                 confirmIconBox.innerHTML = '<ion-icon name="checkmark-done"></ion-icon>';
                 createToast('Forwarding in 5 seconds.');
@@ -282,7 +283,7 @@ async function uploadDocs(formData) {
         
         docsBtn(true);
         createToast('Uploading Documents...');
-        const uploadDocsResponse = await fetch(`${SERVER_HOST_URL}/api-prof/v1/auth/upload-docs`, {
+        const uploadDocsResponse = await fetch(`${SERVER_HOST_URL}/api-prof/v1/auth/upload-docs/${localStorage.getItem('__sivagroup__registerUserId')}`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('__sivagroup__registertoken')}`
@@ -310,7 +311,6 @@ async function uploadDocs(formData) {
 }
 
 function checkFileSize(file) {
-    console.log(file);
     const fileName = file.name;
     const fileSize = file.size;
     const fileSizeInKB = fileSize/1024;
@@ -329,8 +329,6 @@ function checkFileSize(file) {
 
 async function handleUploadDocumentsSubmit(e) {
     e.preventDefault();
-
-    console.log("Hello");
 
     const formData = new FormData(e.currentTarget);
 
@@ -369,7 +367,8 @@ async function handleUploadDocumentsSubmit(e) {
     })
 
     const response = await uploadDocs(formData);
-    if (response.message === 'Documents Uploaded.') {
+    console.log(response);
+    if (response.message === 'Documents Uploaded') {
         createToast(response.message);
         btnInfo(false);
         updateToNextSection();

@@ -188,7 +188,7 @@ body {
   -webkit-background-clip: text;
 }
 
-.app__landing div button {
+.app__landing div a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -535,11 +535,12 @@ body {
   color: #000;
 }
 
-.jobs__show button {
+.jobs__show a {
   padding: 0.6rem 1.2rem;
   font-family: inherit;
   font-size: 1rem;
   outline: none;
+  text-decoration: none;
   border: 1px solid rgba(228, 151, 63, 1);
   border-radius: 24px;
   background-color: transparent;
@@ -705,7 +706,7 @@ body {
     border-color: #000;
   }
 
-  .nav__menu a:last-child:is(:hover, :focus-visible), .app__landing div button:is(:hover, :focus-visible) {
+  .nav__menu a:last-child:is(:hover, :focus-visible), .app__landing div a:is(:hover, :focus-visible) {
     background-color: #2b9ea0;
     color: #FFFFFF;
   }
@@ -721,7 +722,7 @@ body {
     color: #FFFFFF;
   }
 
-  .jobs__show button:is(:hover, :focus-visible) {
+  .jobs__show a:is(:hover, :focus-visible) {
     background-color: rgba(228, 151, 63, 1);
     color: #FFFFFF;
   }
