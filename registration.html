@@ -24,6 +24,8 @@
                 <span title="Confirm Email"><ion-icon name="mail"></ion-icon></span>
                 <div class="seperator"></div>
                 <span title="Upload Documents"><ion-icon name="documents"></ion-icon></span>
+                <div class="seperator"></div>
+                <span title="Verifying Details"><ion-icon name="shield-checkmark"></ion-icon></span>
             </div>
             <h2>Personal Details</h2>
         </div>
@@ -174,12 +176,16 @@
                 <span title="Confirm Email"><ion-icon name="mail"></ion-icon></span>
                 <div class="seperator"></div>
                 <span title="Upload Documents"><ion-icon name="documents"></ion-icon></span>
+                <div class="seperator"></div>
+                <span title="Verifying Details"><ion-icon name="shield-checkmark"></ion-icon></span>
             </div>
             <h2>Email Confirmation</h2>
         </div>
         
         <div class="register__confirm" onsubmit="handlePersonalDetailsSubmit(event)">
-            <ion-icon name="mail-unread"></ion-icon>
+            <div class="confirm__icon">
+                <ion-icon name="mail-unread"></ion-icon>
+            </div>
             <p>A verification mail has been sent to your registered email. Checkout and click on verify button.</p>
             <a href="https://mail.google.com/mail/u/0/#inbox" rel="noopener noreferrer" title="Gmail Inbox">Open Gmail</a>
         </div>
@@ -203,8 +209,10 @@
                 <span title="Confirm Email" class="section__done"><ion-icon name="mail"></ion-icon></span>
                 <div class="seperator"></div>
                 <span title="Upload Documents"><ion-icon name="documents"></ion-icon></span>
+                <div class="seperator"></div>
+                <span title="Verifying Details"><ion-icon name="shield-checkmark"></ion-icon></span>
             </div>
-            <h2>Upload Documents</h2>
+            <h2>Upload Documents <span>(less than 2 MB)</span></h2>
         </div>
 
         <form class="register__form" onsubmit="handleUploadDocumentsSubmit(event)">
@@ -217,7 +225,7 @@
                         <p>(PNG, JPEG, SVG, PDF only)</p>
                         <p id="msg__show">1 File Selected!</p>
                     </label>
-                    <input type="file" onchange="selectedFile(event, 'idF')" id="idCardF" name="idCard" required aria-required="true" accept=".jpg, .png, .svg, .jpeg, .pdf">
+                    <input type="file" onchange="selectedFile(event, 'idF')" id="idCardF" name="aadharFront"  accept=".jpg, .png, .svg, .jpeg, .pdf">
                 </div>
                 <div class="form__upload">
                     <label id="idB" for="idCardB">
@@ -226,7 +234,7 @@
                         <p>(PNG, JPEG, SVG, PDF only)</p>
                         <p id="msg__show">1 File Selected!</p>
                     </label>
-                    <input type="file" id="idCardB" onchange="selectedFile(event, 'idB')" name="idCardB" required aria-required="true" accept=".jpg, .png, .svg, .jpeg, .pdf">
+                    <input type="file" id="idCardB" onchange="selectedFile(event, 'idB')" name="aadharBack"  accept=".jpg, .png, .svg, .jpeg, .pdf">
                 </div>
             </div>
 
@@ -239,7 +247,7 @@
                         <p>(PNG, JPEG, SVG only)</p>
                         <p id="msg__show">1 File Selected!</p>
                     </label>
-                    <input type="file" id="uniformPic1" onchange="selectedFile(event, 'uni1')" name="uniformPic1" required aria-required="true" accept=".jpg, .png, .svg, .jpeg">
+                    <input type="file" id="uniformPic1" onchange="selectedFile(event, 'uni1')" name="withUniform"  accept=".jpg, .png, .svg, .jpeg">
                 </div>
                 <div class="form__upload">
                     <label id="uni2" for="uniformPic2">
@@ -248,7 +256,7 @@
                         <p>(PNG, JPEG, SVG only)</p>
                         <p id="msg__show">1 File Selected!</p>
                     </label>
-                    <input type="file" id="uniformPic2" onchange="selectedFile(event, 'uni2')" name="uniformPic2" required aria-required="true" accept=".jpg, .png, .svg, .jpeg">
+                    <input type="file" id="uniformPic2" onchange="selectedFile(event, 'uni2')" name="withUniform"  accept=".jpg, .png, .svg, .jpeg">
                 </div>
                 <div class="form__upload">
                     <label id="uni3" for="uniformPic3">
@@ -257,7 +265,7 @@
                         <p>(PNG, JPEG, SVG only)</p>
                         <p id="msg__show">1 File Selected!</p>
                     </label>
-                    <input type="file" id="uniformPic3" name="uniformPic3" onchange="selectedFile(event, 'uni3')" required aria-required="true" accept=".jpg, .png, .svg, .jpeg">
+                    <input type="file" id="uniformPic3" name="withUniform" onchange="selectedFile(event, 'uni3')"  accept=".jpg, .png, .svg, .jpeg">
                 </div>
             </div>
 
@@ -270,7 +278,7 @@
                         <p>(PNG, JPEG, SVG only)</p>
                         <p id="msg__show">1 File Selected!</p>
                     </label>
-                    <input type="file" onchange="selectedFile(event, 'wuni1')" id="withoutUniformPic1" name="withoutUniformPic1" required aria-required="true" accept=".jpg, .png, .svg, .jpeg">
+                    <input type="file" onchange="selectedFile(event, 'wuni1')" id="withoutUniformPic1" name="withoutUniform"  accept=".jpg, .png, .svg, .jpeg">
                 </div>
                 <div class="form__upload">
                     <label id="wuni2" for="withoutUniformPic2">
@@ -279,7 +287,7 @@
                         <p>(PNG, JPEG, SVG only)</p>
                         <p id="msg__show">1 File Selected!</p>
                     </label>
-                    <input type="file" onchange="selectedFile(event, 'wuni2')" id="withoutUniformPic2" name="withoutUniformPic2" required aria-required="true" accept=".jpg, .png, .svg, .jpeg">
+                    <input type="file" onchange="selectedFile(event, 'wuni2')" id="withoutUniformPic2" name="withoutUniform"  accept=".jpg, .png, .svg, .jpeg">
                 </div>
                 <div class="form__upload">
                     <label id="wuni3" for="withoutUniformPic3">
@@ -288,12 +296,12 @@
                         <p>(PNG, JPEG, SVG only)</p>
                         <p id="msg__show">1 File Selected!</p>
                     </label>
-                    <input type="file" onchange="selectedFile(event, 'wuni3')" id="withoutUniformPic3" name="withoutUniformPic3" required aria-required="true" accept=".jpg, .png, .svg, .jpeg">
+                    <input type="file" onchange="selectedFile(event, 'wuni3')" id="withoutUniformPic3" name="withoutUniform"  accept=".jpg, .png, .svg, .jpeg">
                 </div>
             </div>
 
             <div class="form__options">
-                <button type="submit" title="Register Now">Upload Documents</button>
+                <button type="submit" id="docsSubmitBtn" title="Upload Documents">Upload Documents</button>
             </div>
 
         </form>
@@ -302,7 +310,7 @@
 
     <!-- Section 3 -->
 
-    <!-- Section 2 -->
+    <!-- Section 4 -->
 
     <section class="register__section hide__section" data-registrationId="3">
 
@@ -317,6 +325,38 @@
                 <span title="Confirm Email" class="section__done"><ion-icon name="mail"></ion-icon></span>
                 <div class="seperator"></div>
                 <span title="Upload Documents" class="section__done"><ion-icon name="documents"></ion-icon></span>
+                <div class="seperator"></div>
+                <span title="Verifying Details"><ion-icon name="shield-checkmark"></ion-icon></span>
+            </div>
+            <h2>Verifying Details</h2>
+        </div>
+        
+        <div class="register__confirm" onsubmit="handlePersonalDetailsSubmit(event)">
+            <span>🧐</span>
+            <p>Our team is validating your details. Will send you an email to you're registered Mail ID as soon as we are done verifying.</p>
+        </div>
+    
+    </section>
+
+    <!-- Section 4 -->
+
+    <!-- Section 5 -->
+
+    <section class="register__section hide__section" data-registrationId="3">
+
+        <div class="register__head">
+            <div class="head__main">
+                <h1>New Registration</h1>
+                <img src="/assets/Logo.svg" alt="Siva Group" title="Siva Group">
+            </div>
+            <div class="register__progress">
+                <span title="Fill in Details" class="section__done"><ion-icon name="pencil"></ion-icon></span>
+                <div class="seperator"></div>
+                <span title="Confirm Email" class="section__done"><ion-icon name="mail"></ion-icon></span>
+                <div class="seperator"></div>
+                <span title="Verifying Details" class="section__done"><ion-icon name="shield-checkmark"></ion-icon></span>
+                <div class="seperator"></div>
+                <span title="Upload Documents" class="section__done"><ion-icon name="documents"></ion-icon></span>
             </div>
             <h2>Thanks For Register!</h2>
         </div>
@@ -329,7 +369,7 @@
     
     </section>
 
-    <!-- Section 2 -->
+    <!-- Section 5 -->
 
 
     <!-- Scripts -->

@@ -1,13 +1,33 @@
-let currentRegisterSection = 0;
+const SERVER_HOST_URL = "https://manpower-backend-shk1.onrender.com";
+
+function getCurrentRegisterSectionFromLS() {
+    const currentSection = localStorage.getItem('__sivagroup__registration');
+    if (!currentSection) {
+        return -1;
+    }
+    return parseInt(currentSection);
+}
+
+let currentRegisterSection = getCurrentRegisterSectionFromLS();
 
 function updateToNextSection() {
     const allRegisteredSection = Array.from(document.querySelectorAll('.register__section'));
     allRegisteredSection.forEach((section) => {
         section.classList.add('hide__section')
-        allRegisteredSection[currentRegisterSection + 1].classList.remove('hide__section');
+        allRegisteredSection[currentRegisterSection + 2].classList.remove('hide__section');
     })
     currentRegisterSection += 1;
+    localStorage.setItem('__sivagroup__registration', currentRegisterSection);
 }
+
+window.addEventListener('load', () => {
+    const currentRegisterSection = getCurrentRegisterSectionFromLS();
+    const allRegisteredSection = Array.from(document.querySelectorAll('.register__section'));
+    allRegisteredSection.forEach((section) => {
+        section.classList.add('hide__section')
+        allRegisteredSection[currentRegisterSection + 1].classList.remove('hide__section');
+    })
+})
 
 // Toastify
 
@@ -83,8 +103,8 @@ function selectedFile(e, mainId) {
     const msgPara = document.querySelector(`#${mainId} #msg__show`);
     
     if (e.target.files) {
-        const fileName = e.target.files[0];
-        fileName && msgPara.classList.add('show__selected');
+        const file = e.target.files[0];
+        file && msgPara.classList.add('show__selected');
     }
 }
 
@@ -99,12 +119,20 @@ function btnInfo(isLoading) {
     detailSubmitBtn.innerHTML = isLoading ? '<span class="btnLoader"></span>' : 'Submit Details';
 }
 
+function docsBtn(isLoading) {
+    const docsSubmitBtn = document.querySelector('#docsSubmitBtn');
+
+    docsSubmitBtn.disabled = isLoading;
+    docsSubmitBtn.innerHTML = isLoading ? '<span class="btnLoader"></span>' : 'Upload Documents';
+}
+
 async function newRegistration(registeredDetails) {
     try {
         
+
         btnInfo(true);
         createToast('Verifying Details...');
-        const newRegistraionResponse = await fetch(`https://manpower-backend-shk1.onrender.com/api-prof/v1/auth/register`, {
+        const newRegistraionResponse = await fetch(`${SERVER_HOST_URL}/api-prof/v1/auth/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -180,7 +208,6 @@ async function handlePersonalDetailsSubmit(e) {
 
     const registerDetails = { fullName, email, password, age, mobileNumber, username, address, education, contactNumbers, accountDetails, upiId, workExperience, language, dutyHours, payment, services };
 
-    console.log(registerDetails);
     
     const response = await newRegistration(registerDetails);
     if (response.mesage === 'An email has been sent to your mail.') {
@@ -191,7 +218,161 @@ async function handlePersonalDetailsSubmit(e) {
 
 }
 
-function handleUploadDocumentsSubmit(e) {
+const confirmIconBox = document.querySelector('.confirm__icon');
+
+async function emailVerification(mailToken) {
+    try {
+        
+        const emailVerificationResponse = await fetch(`${SERVER_HOST_URL}/api-prof/v1/auth/confirm-email/${mailToken}`, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+            }
+        });
+
+        if (!emailVerificationResponse.ok) {
+            console.log('Email verification failed. Try again!');
+            createToast('Email verification failed. Try again!');
+            confirmIconBox.innerHTML = '<ion-icon name="mail-unread"></ion-icon>';
+            return '';
+        }
+
+        const confirmResponse = await emailVerificationResponse.json();
+        return confirmResponse;
+
+    } catch (error) {
+        console.log(error);
+        createToast('Internal Server Issues');
+        return ''
+    }
+}
+
+window.addEventListener('load', () => {
+    if (getCurrentRegisterSectionFromLS() === 0) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const confirmation = urlParams.get('confirmation');
+
+        if (!confirmation) {
+            return '';
+        }
+
+        createToast('Verifying email...');
+        confirmIconBox.innerHTML = '<span class="confirmLoader"></span>';
+        emailVerification(confirmation).then((response) => {
+            const {message, token} = response;
+            if (message === 'Email Verified') {
+                createToast('Email Verified');
+                localStorage.setItem('__sivagroup__registertoken', token);
+                confirmIconBox.innerHTML = '<ion-icon name="checkmark-done"></ion-icon>';
+                createToast('Forwarding in 5 seconds.');
+                setTimeout(updateToNextSection, 5000);
+            } else if (message === 'Invalid Token') {
+                confirmIconBox.innerHTML = '<ion-icon name="close"></ion-icon>';
+                createToast('Verification failed. Try again!');
+            }
+        }).catch(err => {
+            console.log(err);
+            createToast('Verification failed');
+        });
+    }
+})
+
+async function uploadDocs(formData) {
+    try {
+        
+        docsBtn(true);
+        createToast('Uploading Documents...');
+        const uploadDocsResponse = await fetch(`${SERVER_HOST_URL}/api-prof/v1/auth/upload-docs`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('__sivagroup__registertoken')}`
+            },
+            body: formData
+        });
+
+        if (!uploadDocsResponse.ok) {
+            console.log('Issue uploading Docs');
+            if (uploadDocsResponse.status === 403) {
+                createToast('Email not verified. Verify and try again.');
+            }
+            docsBtn(false);
+            return '';
+        }
+
+        const response = await uploadDocsResponse.json();
+        return response;
+
+    } catch (error) {
+        console.log(error);
+        createToast('Internal Server Issues');
+        return ''
+    }
+}
+
+function checkFileSize(file) {
+    console.log(file);
+    const fileName = file.name;
+    const fileSize = file.size;
+    const fileSizeInKB = fileSize/1024;
+    if (fileSizeInKB > 2048) {
+        return {
+            status: false,
+            name: fileName
+        };
+    } else {
+        return {
+            status: true,
+            name: fileName
+        };
+    }
+}
+
+async function handleUploadDocumentsSubmit(e) {
     e.preventDefault();
+
+    console.log("Hello");
+
     const formData = new FormData(e.currentTarget);
+
+    const aadharFront = formData.get('aadharFront');
+    const aadharFrontStatus = checkFileSize(aadharFront);
+
+    if (!aadharFrontStatus.status) {
+        createToast(`ID Front file is larger than 2 MB`);
+        return ''
+    }
+
+    const aadharBack = formData.get('aadharBack');
+    const aadharBackStatus = checkFileSize(aadharBack);
+
+    if (!aadharBackStatus.status) {
+        createToast(`ID Back file is larger than 2 MB`);
+        return ''
+    }
+
+    const withUniformPics = formData.getAll('withUniform');
+    withUniformPics.forEach((pic, index) => {
+        const picStatus = checkFileSize(pic);
+        if (!picStatus.status) {
+            createToast(`Uniform Pic ${index + 1} is larger than 2 MB`);
+            return ''; 
+        }
+    })
+
+    const withoutUniform = formData.getAll('withoutUniform');
+    withoutUniform.forEach((pic, index) => {
+        const picStatus = checkFileSize(pic);
+        if (!picStatus.status) {
+            createToast(`No Uniform Pic ${index + 1} is larger than 2 MB`);
+            return ''; 
+        }
+    })
+
+    const response = await uploadDocs(formData);
+    if (response.message === 'Documents Uploaded.') {
+        createToast(response.message);
+        btnInfo(false);
+        updateToNextSection();
+    }
+
 }
