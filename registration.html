@@ -9,367 +9,373 @@
 </head>
 <body>
 
-    <!-- Section 1 -->
+    <main class="registration__main">
 
-    <section class="register__section" data-registrationId="0">
+        <div class="bg__overlay"></div>
 
-        <div class="register__head">
-            <div class="head__main">
-                <h1>New Registration</h1>
-                <img src="/assets/Logo.svg" alt="Siva Group" title="Siva Group">
+        <!-- Section 1 -->
+
+        <section class="register__section" data-registrationId="0">
+
+            <div class="register__head">
+                <div class="head__main">
+                    <h1>New Registration</h1>
+                    <img src="/assets/Logo.svg" alt="Siva Group" title="Siva Group">
+                </div>
+                <div class="register__progress">
+                    <span title="Fill in Details"><ion-icon name="pencil"></ion-icon></span>
+                    <div class="seperator"></div>
+                    <span title="Confirm Email"><ion-icon name="mail"></ion-icon></span>
+                    <div class="seperator"></div>
+                    <span title="Upload Documents"><ion-icon name="documents"></ion-icon></span>
+                    <div class="seperator"></div>
+                    <span title="Verifying Details"><ion-icon name="shield-checkmark"></ion-icon></span>
+                </div>
+                <h2>Personal Details</h2>
             </div>
-            <div class="register__progress">
-                <span title="Fill in Details"><ion-icon name="pencil"></ion-icon></span>
-                <div class="seperator"></div>
-                <span title="Confirm Email"><ion-icon name="mail"></ion-icon></span>
-                <div class="seperator"></div>
-                <span title="Upload Documents"><ion-icon name="documents"></ion-icon></span>
-                <div class="seperator"></div>
-                <span title="Verifying Details"><ion-icon name="shield-checkmark"></ion-icon></span>
+            
+            <form class="register__form" onsubmit="handlePersonalDetailsSubmit(event)">
+                <div class="form__input">
+                    <label for="fullName">Full Name<span>*</span></label>
+                    <input required type="text" placeholder="Enter Full Name" name="fullName" id="fullName" title="Provide Full Name">
+                </div>
+                <div class="form__input">
+                    <label for="age">Age<span>*</span></label>
+                    <input required type="number" pattern="^[0-9+\s]*$" placeholder="Enter Age" name="age" id="age" min="18" max="99">
+                </div>
+                <div class="form__input">
+                    <label for="email">Email<span>*</span></label>
+                    <input required type="email" placeholder="Enter Email Address" name="email" id="email">
+                </div>
+                <div class="form__input">
+                    <label for="password">Password<span>*</span></label>
+                    <input required type="password" placeholder="Create password" name="password" id="password">
+                </div>
+                <div class="form__input">
+                    <label for="username">Username<span>*</span></label>
+                    <input required type="text" placeholder="Enter Username" name="username" id="username" title="Provide Full Name">
+                </div>
+                <div class="form__input">
+                    <label for="mobileNumber">Mobile Number<span>*</span></label>
+                    <input required type="text" pattern="^[0-9+\s]*$" placeholder="Enter Phone Number" name="mobileNumber" id="mobileNumber">
+                </div>
+
+                <h3>Other Contact Info</h3>
+                <div class="form__input">
+                    <label for="phoneNumber">Phone Number<span>*</span></label>
+                    <input required type="text" pattern="^[0-9+\s]*$" placeholder="Enter Phone Number" name="phoneNumber" id="phoneNumber">
+                </div>
+                <div class="form__input">
+                    <label for="whatsappNumber">WhatsApp Number<span>*</span></label>
+                    <input required type="text" pattern="^[0-9+\s]*$" placeholder="Enter WhatsApp Number" name="whatsappNumber" id="whatsappNumber">
+                </div>
+                <div class="form__input">
+                    <label for="alternateNumber">Alternate Number</label>
+                    <input type="text" pattern="^[0-9+\s]*$" placeholder="Enter Alternate Number" name="alternateNumber" id="alternateNumber">
+                </div>
+
+                <h3>Address Info</h3>
+                <div class="form__input">
+                    <label for="permanentAddress">Permanent Address<span>*</span></label>
+                    <input required type="text" placeholder="Enter Permanent Address" name="permanent" id="permanentAddress">
+                </div>
+                <div class="form__input">
+                    <label for="currentAddress">Current Address<span>*</span></label>
+                    <input required type="text" placeholder="Enter Current Address" name="current" id="currentAddress">
+                </div>
+                <div class="form__input">
+                    <label for="latitude">Latitude<span>*</span></label>
+                    <input required type="text" placeholder="Latitude" name="latitude" id="latitude">
+                </div>
+                <div class="form__input">
+                    <label for="longitude">Longitude<span>*</span></label>
+                    <input required type="text" placeholder="Longitude" name="longitude" id="longitude">
+                </div>
+
+                <h3>Work Details</h3>
+                <div class="form__input">
+                    <label for="workExperience">Working Experience<span>*</span></label>
+                    <input required type="text" placeholder="Enter Working Experience" name="workExperience" id="workExperience">
+                </div>
+                <div class="form__input">
+                    <label for="education">Education</label>
+                    <select name="education" id="education">
+                        <option value="School">School</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Bachelore of Technologo (B-tech)">Bachelore of Technologo (B-tech)</option>
+                        <option value="Degree">Degree</option>
+                        <option value="Diploma">Diploma</option>
+                        <option value="None">None</option>
+                    </select>
+                </div>
+                <div class="form__input">
+                    <label for="language">Language Spoken</label>
+                    <select name="language" id="language">
+                        <option value="Telugu">Telugu</option>
+                        <option value="Hindi">Hindi</option>
+                        <option value="English">English</option>
+                        <option value="Telugu & Hindi">Telugu & Hindi</option>
+                        <option value="Telugu & English">Telugu & English</option>
+                        <option value="Hindi & English">Hindi & English</option>
+                        <option value="Telugu & Hindi & English">Telugu & Hindi & English</option>
+                    </select>
+                </div>
+                <div class="form__input">
+                    <label for="service">Service</label>
+                    <select name="service" id="service">
+                    </select>
+                </div>
+                <div class="form__input">
+                    <label for="dutyHours">Duty Hours</label>
+                    <select name="dutyHours" id="dutyHours">
+                        <option value="4">4 Hours (Rs 400/-)</option>
+                        <option value="8">8 Hours (Rs 700/-)</option>
+                    </select>
+                </div>
+
+                <h3>Bank Details</h3>
+                <div class="form__input">
+                    <label for="bankName">Bank Name<span>*</span></label>
+                    <input required type="text" placeholder="Enter Bank Name" name="bankName" id="bankName">
+                </div>
+                <div class="form__input">
+                    <label for="holderName">Account Holder Name<span>*</span></label>
+                    <input required type="text" placeholder="Enter Account Holder Name" name="holderName" id="holderName">
+                </div>
+                <div class="form__input">
+                    <label for="number">Account Number<span>*</span></label>
+                    <input required type="text" pattern="^[0-9+\s]*$" placeholder="Enter Account Number" name="number" id="number">
+                </div>
+                <div class="form__input">
+                    <label for="IFSCCode">IFSC Code<span>*</span></label>
+                    <input required type="text" placeholder="Enter IFSC Code" name="IFSCCode" id="IFSCCode">
+                </div>
+                <div class="form__input">
+                    <label for="upiId">UPI ID<span>*</span></label>
+                    <input required type="text" placeholder="Enter UPI ID" name="upiId" id="upiId">
+                </div>
+
+                <div class="form__options">
+                    <button type="submit" id="detailsSubmitBtn" title="Submit Details">Submit Details</button>
+                </div>
+
+            </form>
+
+        </section>
+
+        <!-- Section 1 -->
+
+        <!-- Section 2 -->
+
+        <section class="register__section hide__section" data-registrationId="1">
+
+            <div class="register__head">
+                <div class="head__main">
+                    <h1>New Registration</h1>
+                    <img src="/assets/Logo.svg" alt="Siva Group" title="Siva Group">
+                </div>
+                <div class="register__progress">
+                    <span title="Fill in Details" class="section__done"><ion-icon name="pencil"></ion-icon></span>
+                    <div class="seperator"></div>
+                    <span title="Confirm Email"><ion-icon name="mail"></ion-icon></span>
+                    <div class="seperator"></div>
+                    <span title="Upload Documents"><ion-icon name="documents"></ion-icon></span>
+                    <div class="seperator"></div>
+                    <span title="Verifying Details"><ion-icon name="shield-checkmark"></ion-icon></span>
+                </div>
+                <h2>Email Confirmation</h2>
             </div>
-            <h2>Personal Details</h2>
-        </div>
+            
+            <div class="register__confirm" onsubmit="handlePersonalDetailsSubmit(event)">
+                <div class="confirm__icon">
+                    <ion-icon name="mail-unread"></ion-icon>
+                </div>
+                <p>A verification mail has been sent to your registered email. Checkout and click on verify button.</p>
+                <a href="https://mail.google.com/mail/u/0/#inbox" rel="noopener noreferrer" title="Gmail Inbox">Open Gmail</a>
+            </div>
         
-        <form class="register__form" onsubmit="handlePersonalDetailsSubmit(event)">
-            <div class="form__input">
-                <label for="fullName">Full Name<span>*</span></label>
-                <input required type="text" placeholder="Enter Full Name" name="fullName" id="fullName" title="Provide Full Name">
-            </div>
-            <div class="form__input">
-                <label for="age">Age<span>*</span></label>
-                <input required type="number" pattern="^[0-9+\s]*$" placeholder="Enter Age" name="age" id="age" min="18" max="99">
-            </div>
-            <div class="form__input">
-                <label for="email">Email<span>*</span></label>
-                <input required type="email" placeholder="Enter Email Address" name="email" id="email">
-            </div>
-            <div class="form__input">
-                <label for="password">Password<span>*</span></label>
-                <input required type="password" placeholder="Create password" name="password" id="password">
-            </div>
-            <div class="form__input">
-                <label for="username">Username<span>*</span></label>
-                <input required type="text" placeholder="Enter Username" name="username" id="username" title="Provide Full Name">
-            </div>
-            <div class="form__input">
-                <label for="mobileNumber">Mobile Number<span>*</span></label>
-                <input required type="text" pattern="^[0-9+\s]*$" placeholder="Enter Phone Number" name="mobileNumber" id="mobileNumber">
+        </section>
+
+        <!-- Section 2 -->
+
+        <!-- Section 3 -->
+
+        <section class="register__section hide__section" data-registrationId="2">
+
+            <div class="register__head">
+                <div class="head__main">
+                    <h1>New Registration</h1>
+                    <img src="/assets/Logo.svg" alt="Siva Group" title="Siva Group">
+                </div>
+                <div class="register__progress">
+                    <span title="Fill in Details" class="section__done"><ion-icon name="pencil"></ion-icon></span>
+                    <div class="seperator"></div>
+                    <span title="Confirm Email" class="section__done"><ion-icon name="mail"></ion-icon></span>
+                    <div class="seperator"></div>
+                    <span title="Upload Documents"><ion-icon name="documents"></ion-icon></span>
+                    <div class="seperator"></div>
+                    <span title="Verifying Details"><ion-icon name="shield-checkmark"></ion-icon></span>
+                </div>
+                <h2>Upload Documents <span>(less than 2 MB)</span></h2>
             </div>
 
-            <h3>Other Contact Info</h3>
-            <div class="form__input">
-                <label for="phoneNumber">Phone Number<span>*</span></label>
-                <input required type="text" pattern="^[0-9+\s]*$" placeholder="Enter Phone Number" name="phoneNumber" id="phoneNumber">
-            </div>
-            <div class="form__input">
-                <label for="whatsappNumber">WhatsApp Number<span>*</span></label>
-                <input required type="text" pattern="^[0-9+\s]*$" placeholder="Enter WhatsApp Number" name="whatsappNumber" id="whatsappNumber">
-            </div>
-            <div class="form__input">
-                <label for="alternateNumber">Alternate Number</label>
-                <input type="text" pattern="^[0-9+\s]*$" placeholder="Enter Alternate Number" name="alternateNumber" id="alternateNumber">
-            </div>
+            <form class="register__form" onsubmit="handleUploadDocumentsSubmit(event)">
+                <h3>Identity Upload</h3>
+                <div class="more__input">
+                    <div class="form__upload">
+                        <label id="idF" for="idCardF">
+                            <ion-icon name="cloud-upload-outline"></ion-icon>
+                            <p>Upload Aadhar (or) Voter Card - Front</p>
+                            <p>(PNG, JPEG, SVG, PDF only)</p>
+                            <p id="msg__show">1 File Selected!</p>
+                        </label>
+                        <input type="file" onchange="selectedFile(event, 'idF')" id="idCardF" name="aadharFront"  accept=".jpg, .png, .svg, .jpeg, .pdf">
+                    </div>
+                    <div class="form__upload">
+                        <label id="idB" for="idCardB">
+                            <ion-icon name="cloud-upload-outline"></ion-icon>
+                            <p>Upload Aadhar (or) Voter Card - Back</p>
+                            <p>(PNG, JPEG, SVG, PDF only)</p>
+                            <p id="msg__show">1 File Selected!</p>
+                        </label>
+                        <input type="file" id="idCardB" onchange="selectedFile(event, 'idB')" name="aadharBack"  accept=".jpg, .png, .svg, .jpeg, .pdf">
+                    </div>
+                </div>
 
-            <h3>Address Info</h3>
-            <div class="form__input">
-                <label for="permanentAddress">Permanent Address<span>*</span></label>
-                <input required type="text" placeholder="Enter Permanent Address" name="permanent" id="permanentAddress">
-            </div>
-            <div class="form__input">
-                <label for="currentAddress">Current Address<span>*</span></label>
-                <input required type="text" placeholder="Enter Current Address" name="current" id="currentAddress">
-            </div>
-            <div class="form__input">
-                <label for="latitude">Latitude<span>*</span></label>
-                <input required type="text" placeholder="Latitude" name="latitude" id="latitude">
-            </div>
-            <div class="form__input">
-                <label for="longitude">Longitude<span>*</span></label>
-                <input required type="text" placeholder="Longitude" name="longitude" id="longitude">
-            </div>
+                <h3>With Uniform Pics</h3>
+                <div class="more__input">
+                    <div class="form__upload">
+                        <label id="uni1" for="uniformPic1">
+                            <ion-icon name="cloud-upload-outline"></ion-icon>
+                            <p>Upload 1<sup>st</sup> Picture</p>
+                            <p>(PNG, JPEG, SVG only)</p>
+                            <p id="msg__show">1 File Selected!</p>
+                        </label>
+                        <input type="file" id="uniformPic1" onchange="selectedFile(event, 'uni1')" name="withUniform"  accept=".jpg, .png, .svg, .jpeg">
+                    </div>
+                    <div class="form__upload">
+                        <label id="uni2" for="uniformPic2">
+                            <ion-icon name="cloud-upload-outline"></ion-icon>
+                            <p>Upload 2<sup>nd</sup> Picture</p>
+                            <p>(PNG, JPEG, SVG only)</p>
+                            <p id="msg__show">1 File Selected!</p>
+                        </label>
+                        <input type="file" id="uniformPic2" onchange="selectedFile(event, 'uni2')" name="withUniform"  accept=".jpg, .png, .svg, .jpeg">
+                    </div>
+                    <div class="form__upload">
+                        <label id="uni3" for="uniformPic3">
+                            <ion-icon name="cloud-upload-outline"></ion-icon>
+                            <p>Upload 3<sup>rd</sup> Picture</p>
+                            <p>(PNG, JPEG, SVG only)</p>
+                            <p id="msg__show">1 File Selected!</p>
+                        </label>
+                        <input type="file" id="uniformPic3" name="withUniform" onchange="selectedFile(event, 'uni3')"  accept=".jpg, .png, .svg, .jpeg">
+                    </div>
+                </div>
 
-            <h3>Work Details</h3>
-            <div class="form__input">
-                <label for="workExperience">Working Experience<span>*</span></label>
-                <input required type="text" placeholder="Enter Working Experience" name="workExperience" id="workExperience">
-            </div>
-            <div class="form__input">
-                <label for="education">Education</label>
-                <select name="education" id="education">
-                    <option value="School">School</option>
-                    <option value="Intermediate">Intermediate</option>
-                    <option value="Bachelore of Technologo (B-tech)">Bachelore of Technologo (B-tech)</option>
-                    <option value="Degree">Degree</option>
-                    <option value="Diploma">Diploma</option>
-                    <option value="None">None</option>
-                </select>
-            </div>
-            <div class="form__input">
-                <label for="language">Language Spoken</label>
-                <select name="language" id="language">
-                    <option value="Telugu">Telugu</option>
-                    <option value="Hindi">Hindi</option>
-                    <option value="English">English</option>
-                    <option value="Telugu & Hindi">Telugu & Hindi</option>
-                    <option value="Telugu & English">Telugu & English</option>
-                    <option value="Hindi & English">Hindi & English</option>
-                    <option value="Telugu & Hindi & English">Telugu & Hindi & English</option>
-                </select>
-            </div>
-            <div class="form__input">
-                <label for="service">Service</label>
-                <select name="service" id="service">
-                </select>
-            </div>
-            <div class="form__input">
-                <label for="dutyHours">Duty Hours</label>
-                <select name="dutyHours" id="dutyHours">
-                    <option value="4">4 Hours (Rs 400/-)</option>
-                    <option value="8">8 Hours (Rs 700/-)</option>
-                </select>
-            </div>
+                <h3>Without Uniform Pics</h3>
+                <div class="more__input">
+                    <div class="form__upload">
+                        <label id="wuni1" for="withoutUniformPic1">
+                            <ion-icon name="cloud-upload-outline"></ion-icon>
+                            <p>Upload 1<sup>st</sup> Picture</p>
+                            <p>(PNG, JPEG, SVG only)</p>
+                            <p id="msg__show">1 File Selected!</p>
+                        </label>
+                        <input type="file" onchange="selectedFile(event, 'wuni1')" id="withoutUniformPic1" name="withoutUniform"  accept=".jpg, .png, .svg, .jpeg">
+                    </div>
+                    <div class="form__upload">
+                        <label id="wuni2" for="withoutUniformPic2">
+                            <ion-icon name="cloud-upload-outline"></ion-icon>
+                            <p>Upload 2<sup>nd</sup> Picture</p>
+                            <p>(PNG, JPEG, SVG only)</p>
+                            <p id="msg__show">1 File Selected!</p>
+                        </label>
+                        <input type="file" onchange="selectedFile(event, 'wuni2')" id="withoutUniformPic2" name="withoutUniform"  accept=".jpg, .png, .svg, .jpeg">
+                    </div>
+                    <div class="form__upload">
+                        <label id="wuni3" for="withoutUniformPic3">
+                            <ion-icon name="cloud-upload-outline"></ion-icon>
+                            <p>Upload 3<sup>rd</sup> Picture</p>
+                            <p>(PNG, JPEG, SVG only)</p>
+                            <p id="msg__show">1 File Selected!</p>
+                        </label>
+                        <input type="file" onchange="selectedFile(event, 'wuni3')" id="withoutUniformPic3" name="withoutUniform"  accept=".jpg, .png, .svg, .jpeg">
+                    </div>
+                </div>
 
-            <h3>Bank Details</h3>
-            <div class="form__input">
-                <label for="bankName">Bank Name<span>*</span></label>
-                <input required type="text" placeholder="Enter Bank Name" name="bankName" id="bankName">
-            </div>
-            <div class="form__input">
-                <label for="holderName">Account Holder Name<span>*</span></label>
-                <input required type="text" placeholder="Enter Account Holder Name" name="holderName" id="holderName">
-            </div>
-            <div class="form__input">
-                <label for="number">Account Number<span>*</span></label>
-                <input required type="text" pattern="^[0-9+\s]*$" placeholder="Enter Account Number" name="number" id="number">
-            </div>
-            <div class="form__input">
-                <label for="IFSCCode">IFSC Code<span>*</span></label>
-                <input required type="text" placeholder="Enter IFSC Code" name="IFSCCode" id="IFSCCode">
-            </div>
-            <div class="form__input">
-                <label for="upiId">UPI ID<span>*</span></label>
-                <input required type="text" placeholder="Enter UPI ID" name="upiId" id="upiId">
-            </div>
+                <div class="form__options">
+                    <button type="submit" id="docsSubmitBtn" title="Upload Documents">Upload Documents</button>
+                </div>
 
-            <div class="form__options">
-                <button type="submit" id="detailsSubmitBtn" title="Submit Details">Submit Details</button>
-            </div>
-
-        </form>
-
-    </section>
-
-    <!-- Section 1 -->
-
-    <!-- Section 2 -->
-
-    <section class="register__section hide__section" data-registrationId="1">
-
-        <div class="register__head">
-            <div class="head__main">
-                <h1>New Registration</h1>
-                <img src="/assets/Logo.svg" alt="Siva Group" title="Siva Group">
-            </div>
-            <div class="register__progress">
-                <span title="Fill in Details" class="section__done"><ion-icon name="pencil"></ion-icon></span>
-                <div class="seperator"></div>
-                <span title="Confirm Email"><ion-icon name="mail"></ion-icon></span>
-                <div class="seperator"></div>
-                <span title="Upload Documents"><ion-icon name="documents"></ion-icon></span>
-                <div class="seperator"></div>
-                <span title="Verifying Details"><ion-icon name="shield-checkmark"></ion-icon></span>
-            </div>
-            <h2>Email Confirmation</h2>
-        </div>
+            </form>
         
-        <div class="register__confirm" onsubmit="handlePersonalDetailsSubmit(event)">
-            <div class="confirm__icon">
-                <ion-icon name="mail-unread"></ion-icon>
-            </div>
-            <p>A verification mail has been sent to your registered email. Checkout and click on verify button.</p>
-            <a href="https://mail.google.com/mail/u/0/#inbox" rel="noopener noreferrer" title="Gmail Inbox">Open Gmail</a>
-        </div>
-    
-    </section>
+        </section>
 
-    <!-- Section 2 -->
+        <!-- Section 3 -->
 
-    <!-- Section 3 -->
+        <!-- Section 4 -->
 
-    <section class="register__section hide__section" data-registrationId="2">
+        <section class="register__section hide__section" data-registrationId="3">
 
-        <div class="register__head">
-            <div class="head__main">
-                <h1>New Registration</h1>
-                <img src="/assets/Logo.svg" alt="Siva Group" title="Siva Group">
-            </div>
-            <div class="register__progress">
-                <span title="Fill in Details" class="section__done"><ion-icon name="pencil"></ion-icon></span>
-                <div class="seperator"></div>
-                <span title="Confirm Email" class="section__done"><ion-icon name="mail"></ion-icon></span>
-                <div class="seperator"></div>
-                <span title="Upload Documents"><ion-icon name="documents"></ion-icon></span>
-                <div class="seperator"></div>
-                <span title="Verifying Details"><ion-icon name="shield-checkmark"></ion-icon></span>
-            </div>
-            <h2>Upload Documents <span>(less than 2 MB)</span></h2>
-        </div>
-
-        <form class="register__form" onsubmit="handleUploadDocumentsSubmit(event)">
-            <h3>Identity Upload</h3>
-            <div class="more__input">
-                <div class="form__upload">
-                    <label id="idF" for="idCardF">
-                        <ion-icon name="cloud-upload-outline"></ion-icon>
-                        <p>Upload Aadhar (or) Voter Card - Front</p>
-                        <p>(PNG, JPEG, SVG, PDF only)</p>
-                        <p id="msg__show">1 File Selected!</p>
-                    </label>
-                    <input type="file" onchange="selectedFile(event, 'idF')" id="idCardF" name="aadharFront"  accept=".jpg, .png, .svg, .jpeg, .pdf">
+            <div class="register__head">
+                <div class="head__main">
+                    <h1>New Registration</h1>
+                    <img src="/assets/Logo.svg" alt="Siva Group" title="Siva Group">
                 </div>
-                <div class="form__upload">
-                    <label id="idB" for="idCardB">
-                        <ion-icon name="cloud-upload-outline"></ion-icon>
-                        <p>Upload Aadhar (or) Voter Card - Back</p>
-                        <p>(PNG, JPEG, SVG, PDF only)</p>
-                        <p id="msg__show">1 File Selected!</p>
-                    </label>
-                    <input type="file" id="idCardB" onchange="selectedFile(event, 'idB')" name="aadharBack"  accept=".jpg, .png, .svg, .jpeg, .pdf">
+                <div class="register__progress">
+                    <span title="Fill in Details" class="section__done"><ion-icon name="pencil"></ion-icon></span>
+                    <div class="seperator"></div>
+                    <span title="Confirm Email" class="section__done"><ion-icon name="mail"></ion-icon></span>
+                    <div class="seperator"></div>
+                    <span title="Upload Documents" class="section__done"><ion-icon name="documents"></ion-icon></span>
+                    <div class="seperator"></div>
+                    <span title="Verifying Details"><ion-icon name="shield-checkmark"></ion-icon></span>
                 </div>
+                <h2>Verifying Details</h2>
             </div>
-
-            <h3>With Uniform Pics</h3>
-            <div class="more__input">
-                <div class="form__upload">
-                    <label id="uni1" for="uniformPic1">
-                        <ion-icon name="cloud-upload-outline"></ion-icon>
-                        <p>Upload 1<sup>st</sup> Picture</p>
-                        <p>(PNG, JPEG, SVG only)</p>
-                        <p id="msg__show">1 File Selected!</p>
-                    </label>
-                    <input type="file" id="uniformPic1" onchange="selectedFile(event, 'uni1')" name="withUniform"  accept=".jpg, .png, .svg, .jpeg">
-                </div>
-                <div class="form__upload">
-                    <label id="uni2" for="uniformPic2">
-                        <ion-icon name="cloud-upload-outline"></ion-icon>
-                        <p>Upload 2<sup>nd</sup> Picture</p>
-                        <p>(PNG, JPEG, SVG only)</p>
-                        <p id="msg__show">1 File Selected!</p>
-                    </label>
-                    <input type="file" id="uniformPic2" onchange="selectedFile(event, 'uni2')" name="withUniform"  accept=".jpg, .png, .svg, .jpeg">
-                </div>
-                <div class="form__upload">
-                    <label id="uni3" for="uniformPic3">
-                        <ion-icon name="cloud-upload-outline"></ion-icon>
-                        <p>Upload 3<sup>rd</sup> Picture</p>
-                        <p>(PNG, JPEG, SVG only)</p>
-                        <p id="msg__show">1 File Selected!</p>
-                    </label>
-                    <input type="file" id="uniformPic3" name="withUniform" onchange="selectedFile(event, 'uni3')"  accept=".jpg, .png, .svg, .jpeg">
-                </div>
+            
+            <div class="register__confirm" onsubmit="handlePersonalDetailsSubmit(event)">
+                <span>🧐</span>
+                <p>Our team is validating your details. Will send you an email to you're registered Mail ID as soon as we are done verifying.</p>
             </div>
-
-            <h3>Without Uniform Pics</h3>
-            <div class="more__input">
-                <div class="form__upload">
-                    <label id="wuni1" for="withoutUniformPic1">
-                        <ion-icon name="cloud-upload-outline"></ion-icon>
-                        <p>Upload 1<sup>st</sup> Picture</p>
-                        <p>(PNG, JPEG, SVG only)</p>
-                        <p id="msg__show">1 File Selected!</p>
-                    </label>
-                    <input type="file" onchange="selectedFile(event, 'wuni1')" id="withoutUniformPic1" name="withoutUniform"  accept=".jpg, .png, .svg, .jpeg">
-                </div>
-                <div class="form__upload">
-                    <label id="wuni2" for="withoutUniformPic2">
-                        <ion-icon name="cloud-upload-outline"></ion-icon>
-                        <p>Upload 2<sup>nd</sup> Picture</p>
-                        <p>(PNG, JPEG, SVG only)</p>
-                        <p id="msg__show">1 File Selected!</p>
-                    </label>
-                    <input type="file" onchange="selectedFile(event, 'wuni2')" id="withoutUniformPic2" name="withoutUniform"  accept=".jpg, .png, .svg, .jpeg">
-                </div>
-                <div class="form__upload">
-                    <label id="wuni3" for="withoutUniformPic3">
-                        <ion-icon name="cloud-upload-outline"></ion-icon>
-                        <p>Upload 3<sup>rd</sup> Picture</p>
-                        <p>(PNG, JPEG, SVG only)</p>
-                        <p id="msg__show">1 File Selected!</p>
-                    </label>
-                    <input type="file" onchange="selectedFile(event, 'wuni3')" id="withoutUniformPic3" name="withoutUniform"  accept=".jpg, .png, .svg, .jpeg">
-                </div>
-            </div>
-
-            <div class="form__options">
-                <button type="submit" id="docsSubmitBtn" title="Upload Documents">Upload Documents</button>
-            </div>
-
-        </form>
-    
-    </section>
-
-    <!-- Section 3 -->
-
-    <!-- Section 4 -->
-
-    <section class="register__section hide__section" data-registrationId="3">
-
-        <div class="register__head">
-            <div class="head__main">
-                <h1>New Registration</h1>
-                <img src="/assets/Logo.svg" alt="Siva Group" title="Siva Group">
-            </div>
-            <div class="register__progress">
-                <span title="Fill in Details" class="section__done"><ion-icon name="pencil"></ion-icon></span>
-                <div class="seperator"></div>
-                <span title="Confirm Email" class="section__done"><ion-icon name="mail"></ion-icon></span>
-                <div class="seperator"></div>
-                <span title="Upload Documents" class="section__done"><ion-icon name="documents"></ion-icon></span>
-                <div class="seperator"></div>
-                <span title="Verifying Details"><ion-icon name="shield-checkmark"></ion-icon></span>
-            </div>
-            <h2>Verifying Details</h2>
-        </div>
         
-        <div class="register__confirm" onsubmit="handlePersonalDetailsSubmit(event)">
-            <span>🧐</span>
-            <p>Our team is validating your details. Will send you an email to you're registered Mail ID as soon as we are done verifying.</p>
-        </div>
-    
-    </section>
+        </section>
 
-    <!-- Section 4 -->
+        <!-- Section 4 -->
 
-    <!-- Section 5 -->
+        <!-- Section 5 -->
 
-    <section class="register__section hide__section" data-registrationId="3">
+        <section class="register__section hide__section" data-registrationId="3">
 
-        <div class="register__head">
-            <div class="head__main">
-                <h1>New Registration</h1>
-                <img src="/assets/Logo.svg" alt="Siva Group" title="Siva Group">
+            <div class="register__head">
+                <div class="head__main">
+                    <h1>New Registration</h1>
+                    <img src="/assets/Logo.svg" alt="Siva Group" title="Siva Group">
+                </div>
+                <div class="register__progress">
+                    <span title="Fill in Details" class="section__done"><ion-icon name="pencil"></ion-icon></span>
+                    <div class="seperator"></div>
+                    <span title="Confirm Email" class="section__done"><ion-icon name="mail"></ion-icon></span>
+                    <div class="seperator"></div>
+                    <span title="Verifying Details" class="section__done"><ion-icon name="shield-checkmark"></ion-icon></span>
+                    <div class="seperator"></div>
+                    <span title="Upload Documents" class="section__done"><ion-icon name="documents"></ion-icon></span>
+                </div>
+                <h2>Thanks For Register!</h2>
             </div>
-            <div class="register__progress">
-                <span title="Fill in Details" class="section__done"><ion-icon name="pencil"></ion-icon></span>
-                <div class="seperator"></div>
-                <span title="Confirm Email" class="section__done"><ion-icon name="mail"></ion-icon></span>
-                <div class="seperator"></div>
-                <span title="Verifying Details" class="section__done"><ion-icon name="shield-checkmark"></ion-icon></span>
-                <div class="seperator"></div>
-                <span title="Upload Documents" class="section__done"><ion-icon name="documents"></ion-icon></span>
+            
+            <div class="register__confirm" onsubmit="handlePersonalDetailsSubmit(event)">
+                <span>🥳</span>
+                <p>We respect your patience. We're glad that you've joined with Us. Welcome to our <span>Siva Group Family.</span></p>
+                <p>Our Service Person will contact you soon. Keep you're registered contact number with you.</p>
             </div>
-            <h2>Thanks For Register!</h2>
-        </div>
         
-        <div class="register__confirm" onsubmit="handlePersonalDetailsSubmit(event)">
-            <span>🥳</span>
-            <p>We respect your patience. We're glad that you've joined with Us. Welcome to our <span>Siva Group Family.</span></p>
-            <p>Our Service Person will contact you soon. Keep you're registered contact number with you.</p>
-        </div>
-    
-    </section>
+        </section>
 
-    <!-- Section 5 -->
+        <!-- Section 5 -->
+    
+    </main>
 
 
     <!-- Scripts -->

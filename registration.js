@@ -248,8 +248,18 @@ async function emailVerification(mailToken) {
 }
 
 window.addEventListener('load', () => {
+    
+    const urlParams = new URLSearchParams(window.location.search);
+
+    if (getCurrentRegisterSectionFromLS() === -1) {
+        const confirmation = urlParams.get('confirmation');
+
+        if (confirmation) {
+            updateToNextSection();
+        }
+    }
+
     if (getCurrentRegisterSectionFromLS() === 0) {
-        const urlParams = new URLSearchParams(window.location.search);
         const confirmation = urlParams.get('confirmation');
 
         if (!confirmation) {

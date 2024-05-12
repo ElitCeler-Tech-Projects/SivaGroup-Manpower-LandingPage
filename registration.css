@@ -33,7 +33,7 @@ img {
     :root {
         --c-mainBg: #000000;
         --c-bgOverlay: #00000080;
-        --c-mainShadow: #ebebeb3c;
+        --c-mainShadow: #ebebeb14;
         
         --c-mainText: #ffffff;
         --c-mainSec: #e8e8e8;
@@ -58,11 +58,36 @@ body {
   background: linear-gradient(108.78deg, var(--c-bgOverlay) 49.46%, #1349574c 77.73%);
 }
 
-.register__section {
+.registration__main {
     width: 100%;
+    height: 100vh;
+    overflow-y: scroll;
+    background-image: url('https://images.unsplash.com/photo-1579958902476-7d173da0a05d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTQwNDF8MHwxfHNlYXJjaHw4Nnx8YWklMjB3b3JsZHxlbnwwfHx8fDE3MTU0ODgyMzR8MA&ixlib=rb-4.0.3&q=80&w=1080');
+    background-size: cover;
+    background-position: center;
+    padding: 0.4rem;
+}
+
+.bg__overlay {
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background-color: #232323A0;
+}
+
+.register__section {
+    width: max(600px, 45%);
+    max-width: 100%;
+    margin: 0.8rem auto;
     min-height: 100vh;
     padding: 0.8rem;
     display: block;
+    position: relative;
+    z-index: 99;
+    background-color: var(--c-mainBg);
+    border-radius: 8px;
 }
 
 .register__section.hide__section {
@@ -70,9 +95,7 @@ body {
 }
 
 .register__head {
-    width: max(600px, 45%);
-    max-width: 100%;
-    margin: 0.8rem auto;
+    width: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
@@ -153,9 +176,7 @@ body {
 }
 
 .register__form, .register__confirm {
-    width: max(600px, 45%);
-    max-width: 100%;
-    margin: 0 auto;
+    width: 100%;
     margin-top: 1.2rem;
     display: flex;
     flex-direction: column;
