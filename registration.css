@@ -411,8 +411,9 @@ body {
 }
 
 .form__options button:disabled, .otp__form button:disabled {
-    background-color: transparent;
-    border-color: var(--c-primary);
+    background-color: #1c5d5c2b;
+    border-color: #1c5d5c2b;
+    color: #23232350;
     cursor: not-allowed;
 }
 
@@ -457,6 +458,31 @@ body {
     transform-origin: center center;
 }
 
+.check__terms {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.check__terms input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--c-primary);
+}
+
+.check__terms label {
+    font-size: 0.96rem;
+    font-weight: 400;
+    text-align: left;
+    color: var(--c-mainText);
+}
+
+.check__terms label a {
+    color: var(--c-primary);
+}
+
 @keyframes rotation {
     0% {
         transform: rotate(0deg);
@@ -486,7 +512,7 @@ body {
 
 @media (pointer: fine) and (hover: hover) {
 
-    .form__options button:is(:hover, :focus-visible), #popup2 a:is(:hover, :focus-visible), .register__confirm a:is(:hover, :focus-visible) {
+    .form__options button:not(:disabled):is(:hover, :focus-visible), .otp__form > button:not(:disabled):is(:hover, :focus-visible) {
         color: var(--c-primary);
         background-color: transparent;
     }

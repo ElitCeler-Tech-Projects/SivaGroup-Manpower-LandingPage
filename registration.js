@@ -1,4 +1,6 @@
-const SERVER_HOST_URL = "https://manpower-eliteceler.coffeecodes.in";
+const SERVER_HOST_URL = "http://localhost:8000";
+
+// 1. Getting Current Section
 
 function getCurrentRegisterSectionFromLS() {
     const currentSection = localStorage.getItem('__sivagroup__registration__section');
@@ -9,6 +11,8 @@ function getCurrentRegisterSectionFromLS() {
 }
 
 let currentRegisterSection = getCurrentRegisterSectionFromLS();
+
+// 2. Updating to Next Section. Storing Current Section in Local Storage for Easy access
 
 function updateToNextSection() {
     const allRegisteredSection = Array.from(document.querySelectorAll('.register__section'));
@@ -21,6 +25,8 @@ function updateToNextSection() {
     localStorage.setItem('__sivagroup__registration__section', currentRegisterSection);
 }
 
+// 3. Retreiving stored current section from Local Storage
+
 window.addEventListener('load', () => {
     const allRegisteredSection = Array.from(document.querySelectorAll('.register__section'));
     allRegisteredSection.forEach((section) => {
@@ -29,7 +35,7 @@ window.addEventListener('load', () => {
     });
 })
 
-// Toastify
+// 4. Toastify | For creating Toast Notifications.
 
 function createToast(message) {
     return Toastify({
@@ -50,7 +56,7 @@ function createToast(message) {
     }).showToast();
 }
 
-// Toastify
+// 5. Services in HTML | Populate from Here for Dropdown
 
 const allServices = [
     {
@@ -98,6 +104,8 @@ allServices.forEach((service) => {
     serviceSelectBox.append(serviceOption);
 })
 
+// 6. Showing Selected File | Upload Documents Section
+
 function selectedFile(e, mainId) {
 
     const msgPara = document.querySelector(`#${mainId} #msg__show`);
@@ -108,7 +116,7 @@ function selectedFile(e, mainId) {
     }
 }
 
-// Handle Personal Details Submit
+// 7. Handling all Button Loading...
 
 function btnLoad(isLoading, btnId) {
     const btn = document.querySelector(`${btnId}`);
@@ -131,6 +139,7 @@ async function newRegistration(registeredDetails) {
 
         if (!newRegistraionResponse.ok) {
             if (newRegistraionResponse.status === 409) {
+                console.log(await newRegistraionResponse.json());
                 createToast('Credentials already exists!');
             }
             btnLoad(false, '#detailsSubmitBtn');
@@ -201,6 +210,7 @@ async function handlePersonalDetailsSubmit(e) {
 
     const registerDetails = { fullName, email, password, age, username, address, education, contactNumbers, accountDetails, upiId, workExperience, language, dutyHours, payment, services };
 
+    console.log(registerDetails);
     
     const response = await newRegistration(registerDetails);
     console.log(response);
@@ -213,6 +223,17 @@ async function handlePersonalDetailsSubmit(e) {
 
 
 }
+
+const otpBox = document.querySelector('#otp');
+const otpConfirmBtn = document.querySelector('#otpSubmitBtn');
+
+otpBox.addEventListener('change', () => {
+    if (otpBox.value.length === 6) {
+        otpConfirmBtn.disabled = false; 
+    } else {
+        otpConfirmBtn.disabled = true;
+    }
+})
 
 async function confirmOTP(e) {
     e.preventDefault();
@@ -232,6 +253,8 @@ async function confirmOTP(e) {
 
     const phoneDetails = {phone: phoneNumber, otp};
 
+    console.log(phoneDetails);
+
     try {
 
         btnLoad(true, '#otpSubmitBtn');
@@ -249,14 +272,22 @@ async function confirmOTP(e) {
         if (!verifyOTP.ok) {
             console.log(verifyOTP.status);
             console.log(responseData);
-            createToast('Issue verifying OTP');
+            createToast('Invalid OTP');
             btnLoad(false, '#otpSubmitBtn');
             return '';
         }
 
         console.log(responseData);
+        
         if (responseData.message === 'Phone number verified successfully') {
-            
+            const token = responseData.token;
+            const profId = responseData.prof.id;
+            localStorage.setItem('__register__sivagroup__profid', profId);
+            localStorage.setItem('__register__sivagroup__token', token);
+            localStorage.removeItem('__register__sivagroup__phone');
+            createToast('OTP Verified!');
+            btnLoad(false, '#otpSubmitBtn');
+            updateToNextSection();
         }
     
     } catch (error) {
@@ -267,15 +298,26 @@ async function confirmOTP(e) {
     
 }
 
+const termsCheck = document.querySelector('#terms');
+const uploadDocumentsBtn = document.querySelector('#docsSubmitBtn');
+
+termsCheck.addEventListener('click', () => {
+    if (termsCheck.checked) {
+        uploadDocumentsBtn.disabled = false;
+    } else {
+        uploadDocumentsBtn.disabled = true;
+    }
+})
+
 async function uploadDocs(formData) {
     try {
         
         btnLoad(true, '#docsSubmitBtn');
         createToast('Uploading Documents...');
-        const uploadDocsResponse = await fetch(`${SERVER_HOST_URL}/api-prof/v1/auth/upload-docs/${localStorage.getItem('__sivagroup__registerUserId')}`, {
+        const uploadDocsResponse = await fetch(`${SERVER_HOST_URL}/api-prof/v1/auth/upload-docs/${localStorage.getItem('__register__sivagroup__profid')}`, {
             method: 'POST',
             headers: {
-                'Authorization': `Bearer ${localStorage.getItem('__sivagroup__registertoken')}`
+                'Authorization': `Bearer ${localStorage.getItem('__register__sivagroup__token')}`
             },
             body: formData
         });

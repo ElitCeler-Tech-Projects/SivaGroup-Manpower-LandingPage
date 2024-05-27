@@ -198,7 +198,7 @@
                         <label for="otp">OTP (One Time Password)<span>*</span></label>
                         <input required type="text" pattern="\d{6}" maxlength="6" title="OTP is of 6 Digits. Provide valid OTP." placeholder="Enter OTP" name="otp" id="otp">
                     </div>
-                    <button type="submit" id="otpSubmitBtn">Verify OTP</button>
+                    <button disabled title="Verify OTP" type="submit" id="otpSubmitBtn">Verify OTP</button>
                 </form>
             </div>
         
@@ -312,8 +312,13 @@
                     </div>
                 </div>
 
+                <div class="check__terms">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">By Registering you are agreeing to our <a target="_blank" rel="noopener noreferrer" href="terms.html" title="Terms & Conditions">Terms & Conditions</a></label>
+                </div>
+
                 <div class="form__options">
-                    <button type="submit" id="docsSubmitBtn" title="Upload Documents">Upload Documents</button>
+                    <button disabled type="submit" id="docsSubmitBtn" title="Upload Documents">Upload Documents</button>
                 </div>
 
             </form>
@@ -343,7 +348,7 @@
                 <h2>Verifying Details</h2>
             </div>
             
-            <div class="register__confirm" onsubmit="handlePersonalDetailsSubmit(event)">
+            <div class="register__confirm">
                 <span>🧐</span>
                 <p>Our team is validating your details. Will send you an email to you're registered Mail ID as soon as we are done verifying.</p>
             </div>
@@ -373,7 +378,7 @@
                 <h2>Thanks For Register!</h2>
             </div>
             
-            <div class="register__confirm" onsubmit="handlePersonalDetailsSubmit(event)">
+            <div class="register__confirm">
                 <span>🥳</span>
                 <p>We respect your patience. We're glad that you've joined with Us. Welcome to our <span>Siva Group Family.</span></p>
                 <p>Our Service Person will contact you soon. Keep you're registered contact number with you.</p>

@@ -1,0 +1,123 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic");
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+img {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+}
+
+:root {
+  --c-mainBg: #ffffff;
+  --c-bgOverlay: #ffffff80;
+  --c-mainShadow: #23232310;
+
+  --c-mainText: #000000;
+  --c-mainSec: #333333;
+
+  --c-iconColor: #23232370;
+  --c-mainBorder: #2323234d;
+
+  --c-primary: #1c5c5d;
+}
+
+/* @media (prefers-color-scheme: dark) {
+      :root {
+          --c-mainBg: #000000;
+          --c-bgOverlay: #00000080;
+          --c-mainShadow: #ebebeb14;
+          
+          --c-mainText: #ffffff;
+          --c-mainSec: #e8e8e8;
+  
+          --c-iconColor: #efefef70;
+          --c-mainBorder: #efefef70;
+        
+          --c-primary: #2f9799;
+      }
+  
+      html {
+          color-scheme: dark;
+      }
+  } */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--c-mainText);
+  background: linear-gradient(
+    108.78deg,
+    var(--c-bgOverlay) 49.46%,
+    #1349574c 77.73%
+  );
+  background-repeat: no-repeat;
+}
+
+.terms__main {
+    width: 100%;
+    min-height: 100vh;
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1.2rem;
+}
+
+.terms__main img {
+    width: 172px;
+    height: 100%;
+    object-fit: contain;
+}
+
+.terms__main h1 {
+    text-align: left;
+    color: var(--c-mainText);
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.terms {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0.8rem;
+}
+
+.terms h2 {
+    font-size: 1.36rem;
+    text-align: left;
+    color: var(--c-mainSec);
+    font-weight: 500;
+}
+
+.terms p {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--c-primary);
+    text-align: left;
+}
+
+.terms p a {
+    text-decoration: none;
+    color: var(--c-mainText);
+    outline: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .terms p a:is(:hover, :focus-visible) {
+        text-decoration: underline;
+    }
+}
