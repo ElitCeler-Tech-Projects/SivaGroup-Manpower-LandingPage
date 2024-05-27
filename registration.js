@@ -1,4 +1,4 @@
-const SERVER_HOST_URL = "http://localhost:8000";
+const SERVER_HOST_URL = "https://manpower-eliteceler.coffeecodes.in";
 
 // 1. Getting Current Section
 
