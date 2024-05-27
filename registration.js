@@ -224,17 +224,6 @@ async function handlePersonalDetailsSubmit(e) {
 
 }
 
-const otpBox = document.querySelector('#otp');
-const otpConfirmBtn = document.querySelector('#otpSubmitBtn');
-
-otpBox.addEventListener('change', () => {
-    if (otpBox.value.length === 6) {
-        otpConfirmBtn.disabled = false; 
-    } else {
-        otpConfirmBtn.disabled = true;
-    }
-})
-
 async function confirmOTP(e) {
     e.preventDefault();
 

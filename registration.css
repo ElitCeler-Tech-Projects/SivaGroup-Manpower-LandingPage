@@ -382,7 +382,7 @@ body {
     gap: 0.8rem;
 }
 
-.confirm__icon ion-icon {
+.confirm__icon ion-icon, .register__confirm > span {
     font-size: 72px;
     color: var(--c-mainText);
 }
