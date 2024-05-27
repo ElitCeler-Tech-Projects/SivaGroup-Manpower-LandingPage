@@ -30,7 +30,7 @@
                 <div class="register__progress">
                     <span title="Fill in Details"><ion-icon name="pencil"></ion-icon></span>
                     <div class="seperator"></div>
-                    <span title="Confirm Email"><ion-icon name="mail"></ion-icon></span>
+                    <span title="Confirm Email"><ion-icon name="chatbox-ellipses"></ion-icon></span>
                     <div class="seperator"></div>
                     <span title="Upload Documents"><ion-icon name="documents"></ion-icon></span>
                     <div class="seperator"></div>
@@ -59,10 +59,6 @@
                 <div class="form__input">
                     <label for="username">Username<span>*</span></label>
                     <input required type="text" placeholder="Enter Username" name="username" id="username" title="Provide Full Name">
-                </div>
-                <div class="form__input">
-                    <label for="mobileNumber">Mobile Number<span>*</span></label>
-                    <input required type="text" pattern="^[0-9+\s]*$" placeholder="Enter Phone Number" name="mobileNumber" id="mobileNumber">
                 </div>
 
                 <h3>Other Contact Info</h3>
@@ -182,21 +178,28 @@
                 <div class="register__progress">
                     <span title="Fill in Details" class="section__done"><ion-icon name="pencil"></ion-icon></span>
                     <div class="seperator"></div>
-                    <span title="Confirm Email"><ion-icon name="mail"></ion-icon></span>
+                    <span title="Confirm Email"><ion-icon name="chatbox-ellipses"></ion-icon></span>
                     <div class="seperator"></div>
                     <span title="Upload Documents"><ion-icon name="documents"></ion-icon></span>
                     <div class="seperator"></div>
                     <span title="Verifying Details"><ion-icon name="shield-checkmark"></ion-icon></span>
                 </div>
-                <h2>Email Confirmation</h2>
+                <h2>OTP Verification</h2>
             </div>
             
-            <div class="register__confirm" onsubmit="handlePersonalDetailsSubmit(event)">
+            <div class="register__confirm">
                 <div class="confirm__icon">
-                    <ion-icon name="mail-unread"></ion-icon>
+                    <ion-icon name="chatbox-ellipses"></ion-icon>
+                    <p>Do not Refresh Page!</p>
                 </div>
-                <p>A verification mail has been sent to your registered email. Checkout and click on verify button.</p>
-                <a href="https://mail.google.com/mail/u/0/#inbox" rel="noopener noreferrer" title="Gmail Inbox">Open Gmail</a>
+                <form class="otp__form" onsubmit="confirmOTP(event)">
+                    <h3>An OTP has been sent to Registered Phone Number</h3>
+                    <div class="form__input">
+                        <label for="otp">OTP (One Time Password)<span>*</span></label>
+                        <input required type="text" pattern="\d{6}" maxlength="6" title="OTP is of 6 Digits. Provide valid OTP." placeholder="Enter OTP" name="otp" id="otp">
+                    </div>
+                    <button type="submit" id="otpSubmitBtn">Verify OTP</button>
+                </form>
             </div>
         
         </section>
@@ -215,7 +218,7 @@
                 <div class="register__progress">
                     <span title="Fill in Details" class="section__done"><ion-icon name="pencil"></ion-icon></span>
                     <div class="seperator"></div>
-                    <span title="Confirm Email" class="section__done"><ion-icon name="mail"></ion-icon></span>
+                    <span title="Confirm Email" class="section__done"><ion-icon name="chatbox-ellipses"></ion-icon></span>
                     <div class="seperator"></div>
                     <span title="Upload Documents"><ion-icon name="documents"></ion-icon></span>
                     <div class="seperator"></div>
@@ -331,7 +334,7 @@
                 <div class="register__progress">
                     <span title="Fill in Details" class="section__done"><ion-icon name="pencil"></ion-icon></span>
                     <div class="seperator"></div>
-                    <span title="Confirm Email" class="section__done"><ion-icon name="mail"></ion-icon></span>
+                    <span title="Confirm Email" class="section__done"><ion-icon name="chatbox-ellipses"></ion-icon></span>
                     <div class="seperator"></div>
                     <span title="Upload Documents" class="section__done"><ion-icon name="documents"></ion-icon></span>
                     <div class="seperator"></div>
@@ -361,7 +364,7 @@
                 <div class="register__progress">
                     <span title="Fill in Details" class="section__done"><ion-icon name="pencil"></ion-icon></span>
                     <div class="seperator"></div>
-                    <span title="Confirm Email" class="section__done"><ion-icon name="mail"></ion-icon></span>
+                    <span title="Confirm Email" class="section__done"><ion-icon name="chatbox-ellipses"></ion-icon></span>
                     <div class="seperator"></div>
                     <span title="Verifying Details" class="section__done"><ion-icon name="shield-checkmark"></ion-icon></span>
                     <div class="seperator"></div>

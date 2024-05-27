@@ -1,9 +1,9 @@
-const SERVER_HOST_URL = "https://manpower-backend-shk1.onrender.com";
+const SERVER_HOST_URL = "https://manpower-eliteceler.coffeecodes.in";
 
 function getCurrentRegisterSectionFromLS() {
-    const currentSection = localStorage.getItem('__sivagroup__registration');
+    const currentSection = localStorage.getItem('__sivagroup__registration__section');
     if (!currentSection) {
-        return -1;
+        return 0;
     }
     return parseInt(currentSection);
 }
@@ -14,19 +14,19 @@ function updateToNextSection() {
     const allRegisteredSection = Array.from(document.querySelectorAll('.register__section'));
     allRegisteredSection.forEach((section) => {
         section.classList.add('hide__section')
-        allRegisteredSection[currentRegisterSection + 2].classList.remove('hide__section');
+        allRegisteredSection[currentRegisterSection + 1].classList.remove('hide__section');
     })
     currentRegisterSection += 1;
-    localStorage.setItem('__sivagroup__registration', currentRegisterSection);
+
+    localStorage.setItem('__sivagroup__registration__section', currentRegisterSection);
 }
 
 window.addEventListener('load', () => {
-    const currentRegisterSection = getCurrentRegisterSectionFromLS();
     const allRegisteredSection = Array.from(document.querySelectorAll('.register__section'));
     allRegisteredSection.forEach((section) => {
         section.classList.add('hide__section')
-        allRegisteredSection[currentRegisterSection + 1].classList.remove('hide__section');
-    })
+        allRegisteredSection[currentRegisterSection].classList.remove('hide__section');
+    });
 })
 
 // Toastify
@@ -110,27 +110,16 @@ function selectedFile(e, mainId) {
 
 // Handle Personal Details Submit
 
-let submitDetailsLoading = false;
-
-function btnInfo(isLoading) {
-    const detailSubmitBtn = document.querySelector('#detailsSubmitBtn');
-
-    detailSubmitBtn.disabled = isLoading;
-    detailSubmitBtn.innerHTML = isLoading ? '<span class="btnLoader"></span>' : 'Submit Details';
-}
-
-function docsBtn(isLoading) {
-    const docsSubmitBtn = document.querySelector('#docsSubmitBtn');
-
-    docsSubmitBtn.disabled = isLoading;
-    docsSubmitBtn.innerHTML = isLoading ? '<span class="btnLoader"></span>' : 'Upload Documents';
+function btnLoad(isLoading, btnId) {
+    const btn = document.querySelector(`${btnId}`);
+    btn.disabled = isLoading;
+    btn.innerHTML = isLoading ? '<span class="btnLoader"></span>' : btnId === '#detailsSubmitBtn' ? 'Submit Details' : btnId === '#otpSubmitBtn' ? 'Verify OTP' : 'Upload Documents';
 }
 
 async function newRegistration(registeredDetails) {
     try {
-        
 
-        btnInfo(true);
+        btnLoad(true, '#detailsSubmitBtn');
         createToast('Verifying Details...');
         const newRegistraionResponse = await fetch(`${SERVER_HOST_URL}/api-prof/v1/auth/register`, {
             method: 'POST',
@@ -142,9 +131,9 @@ async function newRegistration(registeredDetails) {
 
         if (!newRegistraionResponse.ok) {
             if (newRegistraionResponse.status === 409) {
-                createToast('Email or username already exists');
+                createToast('Credentials already exists!');
             }
-            btnInfo(false);
+            btnLoad(false, '#detailsSubmitBtn');
             return '';
         }
 
@@ -166,11 +155,13 @@ async function handlePersonalDetailsSubmit(e) {
     const age = parseInt(formData.get('age'));
     const password = formData.get('password');
     const username = formData.get('username');
-    const mobileNumber = parseInt(formData.get('mobileNumber'));
 
-    const phoneNumber = parseInt(formData.get('phoneNumber'));
-    const whatsappNumber = parseInt(formData.get('whatsappNumber'));
-    const alternateNumber = parseInt(formData.get('alternateNumber'));
+    let phoneNumber = formData.get('phoneNumber');
+    if (!phoneNumber.includes('+91')) {
+        phoneNumber = `+91${phoneNumber}`;
+    }
+    const whatsappNumber = formData.get('whatsappNumber');
+    const alternateNumber = formData.get('alternateNumber');
 
     const contactNumbers = { phoneNumber, whatsappNumber, alternateNumber };
 
@@ -201,97 +192,85 @@ async function handlePersonalDetailsSubmit(e) {
     const services = [service];
 
     
-    if (!fullName && !email && !password && !age && !mobileNumber && !username && !permanent && !current && !latitude && !longitude && !education && !phoneNumber && !whatsappNumber && !number && !holderName && !bankName && !IFSCCode && !upiId && !workExperience && !language && !dutyHours && !payment && !service) {
+    if (!fullName && !email && !password && !age && !username && !permanent && !current && !latitude && !longitude && !education && !phoneNumber && !whatsappNumber && !number && !holderName && !bankName && !IFSCCode && !upiId && !workExperience && !language && !dutyHours && !payment && !service) {
         createToast('Fill the required fields!');
         return '';
     }
 
-    const registerDetails = { fullName, email, password, age, mobileNumber, username, address, education, contactNumbers, accountDetails, upiId, workExperience, language, dutyHours, payment, services };
+    localStorage.setItem('__register__sivagroup__phone', phoneNumber);
+
+    const registerDetails = { fullName, email, password, age, username, address, education, contactNumbers, accountDetails, upiId, workExperience, language, dutyHours, payment, services };
 
     
     const response = await newRegistration(registerDetails);
-    if (response.mesage === 'An email has been sent to your mail.') {
+    console.log(response);
+
+    if (response.mesage === 'An OTP has been sent to your number.') {
         createToast(response.mesage);
-        btnInfo(false);
+        btnLoad(false, '#detailsSubmitBtn');
         updateToNextSection();
     }
 
+
 }
 
-const confirmIconBox = document.querySelector('.confirm__icon');
+async function confirmOTP(e) {
+    e.preventDefault();
 
-async function emailVerification(mailToken) {
+    const phoneNumber = localStorage.getItem('__register__sivagroup__phone');
+    if (!phoneNumber) {
+        createToast('Invalid Phone Number!');
+        return '';
+    }
+
+    const otp = parseInt(document.querySelector('#otp')?.value);
+
+    if (!otp) {
+        createToast('Provide Valid OTP');
+        return '';
+    }
+
+    const phoneDetails = {phone: phoneNumber, otp};
+
     try {
-        
-        const emailVerificationResponse = await fetch(`${SERVER_HOST_URL}/api-prof/v1/auth/confirm-email/${mailToken}`, {
+
+        btnLoad(true, '#otpSubmitBtn');
+        createToast('Verifying OTP...');
+        const verifyOTP = await fetch(`${SERVER_HOST_URL}/api-prof/v1/auth/verify-phone`, {
             method: 'POST',
             headers: {
-                "Content-Type": "application/json",
-            }
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(phoneDetails)
         });
 
-        if (!emailVerificationResponse.ok) {
-            console.log('Email verification failed. Try again!');
-            createToast('Email verification failed. Try again!');
-            confirmIconBox.innerHTML = '<ion-icon name="mail-unread"></ion-icon>';
+        const responseData = await verifyOTP.json();
+
+        if (!verifyOTP.ok) {
+            console.log(verifyOTP.status);
+            console.log(responseData);
+            createToast('Issue verifying OTP');
+            btnLoad(false, '#otpSubmitBtn');
             return '';
         }
 
-        const confirmResponse = await emailVerificationResponse.json();
-        return confirmResponse;
-
+        console.log(responseData);
+        if (responseData.message === 'Phone number verified successfully') {
+            
+        }
+    
     } catch (error) {
         console.log(error);
         createToast('Internal Server Issues');
         return ''
     }
-}
-
-window.addEventListener('load', () => {
     
-    const urlParams = new URLSearchParams(window.location.search);
-
-    if (getCurrentRegisterSectionFromLS() === -1) {
-        const confirmation = urlParams.get('confirmation');
-
-        if (confirmation) {
-            updateToNextSection();
-        }
-    }
-
-    if (getCurrentRegisterSectionFromLS() === 0) {
-        const confirmation = urlParams.get('confirmation');
-
-        if (!confirmation) {
-            return '';
-        }
-
-        createToast('Verifying email...');
-        confirmIconBox.innerHTML = '<span class="confirmLoader"></span>';
-        emailVerification(confirmation).then((response) => {
-            const {message, token, professional} = response;
-            if (message === 'Email Verified') {
-                createToast('Email Verified');
-                localStorage.setItem('__sivagroup__registerUserId', professional.id);
-                localStorage.setItem('__sivagroup__registertoken', token);
-                confirmIconBox.innerHTML = '<ion-icon name="checkmark-done"></ion-icon>';
-                createToast('Forwarding in 5 seconds.');
-                setTimeout(updateToNextSection, 5000);
-            } else if (message === 'Invalid Token') {
-                confirmIconBox.innerHTML = '<ion-icon name="close"></ion-icon>';
-                createToast('Verification failed. Try again!');
-            }
-        }).catch(err => {
-            console.log(err);
-            createToast('Verification failed');
-        });
-    }
-})
+}
 
 async function uploadDocs(formData) {
     try {
         
-        docsBtn(true);
+        btnLoad(true, '#docsSubmitBtn');
         createToast('Uploading Documents...');
         const uploadDocsResponse = await fetch(`${SERVER_HOST_URL}/api-prof/v1/auth/upload-docs/${localStorage.getItem('__sivagroup__registerUserId')}`, {
             method: 'POST',
@@ -306,7 +285,7 @@ async function uploadDocs(formData) {
             if (uploadDocsResponse.status === 403) {
                 createToast('Email not verified. Verify and try again.');
             }
-            docsBtn(false);
+            btnLoad(false, '#docsSubmitBtn');
             return '';
         }
 
@@ -377,10 +356,9 @@ async function handleUploadDocumentsSubmit(e) {
     })
 
     const response = await uploadDocs(formData);
-    console.log(response);
     if (response.message === 'Documents Uploaded') {
         createToast(response.message);
-        btnInfo(false);
+        btnLoad(false, '#docsSubmitBtn');
         updateToNextSection();
     }
 

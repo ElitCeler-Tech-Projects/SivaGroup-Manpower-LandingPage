@@ -189,6 +189,16 @@ body {
     background-color: transparent;
 }
 
+.otp__form {
+    width: 100%;
+    display: flex;
+    background-color: transparent;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
 .form__input {
     width: 100%;
     display: flex;
@@ -334,7 +344,7 @@ body {
     padding-top: 0.8rem;
 }
 
-.form__options button, .register__confirm a {
+.form__options button, .otp__form button {
     width: 100%;
     text-align: center;
     outline: none;
@@ -351,18 +361,41 @@ body {
     transition: color 0.3s ease, background-color 0.3s ease;
 }
 
+.otp__form > h3 {
+    text-align: left;
+    width: 100%;
+    font-size: 1.12rem;
+    font-weight: 600;
+    color: var(--c-primary);
+}
+
 .register__confirm {
     justify-content: flex-start;
     align-items: flex-start;
 }
 
-.register__confirm div ion-icon, .register__confirm span {
+.confirm__icon {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.8rem;
+}
+
+.confirm__icon ion-icon {
     font-size: 72px;
     color: var(--c-mainText);
 }
 
-.register__confirm p {
-    font-size: 1.08rem;
+.confirm__icon p {
+    font-size: 0.98rem;
+    text-align: left;
+    color: #FF0000;
+    font-weight: 400;
+}
+
+.register__confirm > p {
+    font-size: 0.98rem;
     text-align: left;
     color: var(--c-mainText);
     font-weight: 400;
@@ -377,7 +410,7 @@ body {
     width: auto;
 }
 
-.form__options button:disabled {
+.form__options button:disabled, .otp__form button:disabled {
     background-color: transparent;
     border-color: var(--c-primary);
     cursor: not-allowed;
