@@ -64,7 +64,7 @@ const allServices = [
         service: 'Hospitality Services'
     },
     {
-        id: "adf6df2a-6fbd-4daa-b225-4f2d1e09a957",
+        id: "f6043180-45a8-418c-8a80-4129657e8154",
         service: 'Security Services'
     },
     {
