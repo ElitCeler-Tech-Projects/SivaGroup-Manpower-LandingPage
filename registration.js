@@ -65,7 +65,7 @@ const allServices = [
     },
     {
         id: "adf6df2a-6fbd-4daa-b225-4f2d1e09a957",
-        service: 'Parttime Jobs'
+        service: 'Security Services'
     },
     {
         id: "375bee3b-b3b8-42a5-87b5-423cbc01fe33",
@@ -176,10 +176,9 @@ async function handlePersonalDetailsSubmit(e) {
 
     const permanent = formData.get('permanent');
     const current = formData.get('current');
-    const latitude = parseFloat(formData.get('latitude'));
-    const longitude = parseFloat(formData.get('longitude'));
+    const pincode = parseFloat(formData.get('pincode'));
 
-    const address = { permanent, current, latitude, longitude };
+    const address = { permanent, current, pincode};
 
     const education = formData.get('education');
 
@@ -201,7 +200,7 @@ async function handlePersonalDetailsSubmit(e) {
     const services = [service];
 
     
-    if (!fullName && !email && !password && !age && !username && !permanent && !current && !latitude && !longitude && !education && !phoneNumber && !whatsappNumber && !number && !holderName && !bankName && !IFSCCode && !upiId && !workExperience && !language && !dutyHours && !payment && !service) {
+    if (!fullName && !email && !password && !age && !username && !permanent && !current && !pincode && !education && !phoneNumber && !whatsappNumber && !number && !holderName && !bankName && !IFSCCode && !upiId && !workExperience && !language && !dutyHours && !payment && !service) {
         createToast('Fill the required fields!');
         return '';
     }
