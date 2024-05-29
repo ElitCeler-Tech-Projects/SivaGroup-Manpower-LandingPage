@@ -169,9 +169,14 @@ async function handlePersonalDetailsSubmit(e) {
     if (!phoneNumber.includes('+91')) {
         phoneNumber = `+91${phoneNumber}`;
     }
-    const whatsappNumber = formData.get('whatsappNumber');
-    const alternateNumber = formData.get('alternateNumber');
-
+    let whatsappNumber = formData.get('whatsappNumber');
+    if (!whatsappNumber.includes('+91')) {
+        whatsappNumber = `+91${whatsappNumber}`;
+    }
+    let alternateNumber = formData.get('alternateNumber');
+    if (!alternateNumber.includes('+91')) {
+        alternateNumber = `+91${alternateNumber}`;
+    }
     const contactNumbers = { phoneNumber, whatsappNumber, alternateNumber };
 
     const permanent = formData.get('permanent');
