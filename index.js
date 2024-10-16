@@ -17,49 +17,49 @@ const services = [
         id: 1,
         title: 'Hospitality Services',
         description: 'Tailored staffing solutions for the corporate world, ensuring seamless operations and productivity.',
-        thumbnail: '/assets/S1.svg'
+        thumbnail: '/assets/extra/7.jpeg'
     },
-    {
-        id: 2,
-        title: 'Part Time Job',
-        description: 'Elevating guest experiences with our trained and dedicated hospitality professionals, delivering excellence in service.',
-        thumbnail: '/assets/S2.svg'
-    },
-    {
-        id: 3,
-        title: 'Corporate Manpower Supply',
-        description: 'Flexible opportunities for event staffing, ensuring your gatherings are unforgettable with our skilled event personnel.',
-        thumbnail: '/assets/S3.svg'
-    },
+    // {
+    //     id: 2,
+    //     title: 'Part Time Job',
+    //     description: 'Elevating guest experiences with our trained and dedicated hospitality professionals, delivering excellence in service.',
+    //     thumbnail: '/assets/S2.svg'
+    // },
+    // {
+    //     id: 3,
+    //     title: 'Corporate Manpower Supply',
+    //     description: 'Flexible opportunities for event staffing, ensuring your gatherings are unforgettable with our skilled event personnel.',
+    //     thumbnail: '/assets/S3.svg'
+    // },
     {
         id: 4,
         title: 'Valet Driver',
         description: 'Flexible opportunities for event staffing, ensuring your gatherings are unforgettable with our skilled event personnel.',
-        thumbnail: '/assets/S4.svg'
+        thumbnail: '/assets/extra/2.jpeg'
     },
     {
         id: 5,
         title: 'Bouncers',
         description: 'Flexible opportunities for event staffing, ensuring your gatherings are unforgettable with our skilled event personnel.',
-        thumbnail: '/assets/S5.svg'
+        thumbnail: '/assets/extra/5.jpeg'
     },
     {
         id: 6,
         title: 'House Keeping',
         description: 'Flexible opportunities for event staffing, ensuring your gatherings are unforgettable with our skilled event personnel.',
-        thumbnail: '/assets/S6.svg'
+        thumbnail: '/assets/extra/3.jpeg'
     },
     {
         id: 7,
         title: 'Kitchen Stewards',
         description: 'Flexible opportunities for event staffing, ensuring your gatherings are unforgettable with our skilled event personnel.',
-        thumbnail: '/assets/S7.svg'
+        thumbnail: '/assets/extra/6.jpeg'
     },
     {
         id: 8,
         title: 'Chefs',
         description: 'Flexible opportunities for event staffing, ensuring your gatherings are unforgettable with our skilled event personnel.',
-        thumbnail: '/assets/S8.svg'
+        thumbnail: '/assets/extra/4.jpeg'
     },
 ]
 
