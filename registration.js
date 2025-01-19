@@ -73,35 +73,35 @@ function createToast(message) {
 
 const allServices = [
   {
-    id: '85ac065f-ade0-4d5c-8e0f-c8d2d0b47101',
-    service: 'Hospitality Services',
+    id: 'S001',
+    service: 'Stewards',
   },
   {
-    id: 'f6043180-45a8-418c-8a80-4129657e8154',
+    id: 'S002',
     service: 'Security Services',
   },
   {
-    id: '375bee3b-b3b8-42a5-87b5-423cbc01fe33',
-    service: 'corporate Manpower Supply',
+    id: 'S003',
+    service: 'Corporate Manpower Supply',
   },
   {
-    id: 'a7814fbf-322c-44ff-a01a-dcee0dad3dc3',
+    id: 'S004',
     service: 'Valet Driver',
   },
   {
-    id: '0e7345c1-f8bc-45aa-9181-db2855b09ac8',
+    id: 'S005',
     service: 'Bouncers',
   },
   {
-    id: '99b5fdd2-bf49-499c-839b-0a37c84f4a06',
-    service: 'House Keepers',
+    id: 'S006',
+    service: 'House Keeping',
   },
   {
-    id: '0b514b81-84fc-42d8-b500-dd5e42df1ad3',
+    id: 'S007',
     service: 'Kitchen Stewards',
   },
   {
-    id: 'fcfe522c-3daa-46d1-adf1-e28fc19fe75d',
+    id: 'S008',
     service: 'Chefs',
   },
 ];
@@ -276,11 +276,68 @@ async function handlePersonalDetailsSubmit(e) {
   console.log(response);
 
   if (response.mesage === 'An OTP has been sent to your number.') {
-    createToast(response.mesage);
+    bypassOTP();
     btnLoad(false, '#detailsSubmitBtn');
     updateToNextSection();
   }
+}async function bypassOTP() {
+
+  const phoneNumber = localStorage.getItem('__register__sivagroup__phone');
+  if (!phoneNumber) {
+    createToast('Invalid Phone Number!');
+    return '';
+  }
+
+
+payload = {"secret":"thisisbackendsecret","phoneNumber":phoneNumber}
+
+
+  console.log(payload);
+
+  try {
+    const bypassOtp = await fetch(
+      `${SERVER_HOST_URL}/api-prof/v1/auth/get-jwt`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      }
+    );
+
+    const responseData = await bypassOtp.json();
+
+    if (!bypassOtp.ok) {
+      console.log(bypassOtp.status);
+      console.log(responseData);
+      createToast('Invalid Phone number');
+      return '';
+    }
+
+    console.log(responseData);
+console.log('start if');
+    if (responseData) {
+      const token = responseData.token;
+      const profId = responseData.user.id;
+      console.log(token);
+      console.log(profId);
+      localStorage.setItem('__register__sivagroup__profid', profId);
+      localStorage.setItem('__register__sivagroup__token', token);
+      localStorage.removeItem('__register__sivagroup__phone');
+      createToast('Verified Account');
+  
+  
+    }
+  } catch (error) {
+    console.log(error);
+    createToast('Internal Server Issues');
+    return '';
+  }
 }
+
+
+
 
 async function confirmOTP(e) {
   e.preventDefault();

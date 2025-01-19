@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +13,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
+
 <body>
 
     <main class="registration__main">
@@ -38,15 +40,17 @@
                 </div>
                 <h2>Personal Details</h2>
             </div>
-            
+
             <form class="register__form" onsubmit="handlePersonalDetailsSubmit(event)">
                 <div class="form__input">
                     <label for="fullName">Full Name<span>*</span></label>
-                    <input required type="text" placeholder="Enter Full Name" name="fullName" id="fullName" title="Provide Full Name">
+                    <input required type="text" placeholder="Enter Full Name" name="fullName" id="fullName"
+                        title="Provide Full Name">
                 </div>
                 <div class="form__input">
                     <label for="age">Age<span>*</span></label>
-                    <input required type="number" pattern="^[0-9+\s]*$" placeholder="Enter Age" name="age" id="age" min="18" max="99">
+                    <input required type="number" pattern="^[0-9+\s]*$" placeholder="Enter Age" name="age" id="age"
+                        min="18" max="99">
                 </div>
                 <div class="form__input">
                     <label for="email">Email<span>*</span></label>
@@ -58,27 +62,32 @@
                 </div>
                 <div class="form__input">
                     <label for="username">Username<span>*</span></label>
-                    <input required type="text" placeholder="Enter Username" name="username" id="username" title="Provide Full Name">
+                    <input required type="text" placeholder="Enter Username" name="username" id="username"
+                        title="Provide Full Name">
                 </div>
 
                 <h3>Other Contact Info</h3>
                 <div class="form__input">
                     <label for="phoneNumber">Phone Number<span>*</span></label>
-                    <input required type="text" pattern="^[0-9+\s]*$" placeholder="Enter Phone Number" name="phoneNumber" id="phoneNumber">
+                    <input required type="text" pattern="^[0-9+\s]*$" placeholder="Enter Phone Number"
+                        name="phoneNumber" id="phoneNumber">
                 </div>
                 <div class="form__input">
                     <label for="whatsappNumber">WhatsApp Number<span>*</span></label>
-                    <input required type="text" pattern="^[0-9+\s]*$" placeholder="Enter WhatsApp Number" name="whatsappNumber" id="whatsappNumber">
+                    <input required type="text" pattern="^[0-9+\s]*$" placeholder="Enter WhatsApp Number"
+                        name="whatsappNumber" id="whatsappNumber">
                 </div>
                 <div class="form__input">
                     <label for="alternateNumber">Alternate Number</label>
-                    <input type="text" pattern="^[0-9+\s]*$" placeholder="Enter Alternate Number" name="alternateNumber" id="alternateNumber">
+                    <input type="text" pattern="^[0-9+\s]*$" placeholder="Enter Alternate Number" name="alternateNumber"
+                        id="alternateNumber">
                 </div>
 
                 <h3>Address Info</h3>
                 <div class="form__input">
                     <label for="permanentAddress">Permanent Address<span>*</span></label>
-                    <input required type="text" placeholder="Enter Permanent Address" name="permanent" id="permanentAddress">
+                    <input required type="text" placeholder="Enter Permanent Address" name="permanent"
+                        id="permanentAddress">
                 </div>
                 <div class="form__input">
                     <label for="currentAddress">Current Address<span>*</span></label>
@@ -88,12 +97,13 @@
                     <label for="pincode">Pin Code<span>*</span></label>
                     <input required type="text" placeholder="Enter Pin Code" name="pincode" id="pincode">
                 </div>
-                
+
 
                 <h3>Work Details</h3>
                 <div class="form__input">
                     <label for="workExperience">Working Experience<span>*</span></label>
-                    <input required type="text" placeholder="Enter Working Experience" name="workExperience" id="workExperience">
+                    <input required type="text" placeholder="Enter Working Experience" name="workExperience"
+                        id="workExperience">
                 </div>
                 <div class="form__input">
                     <label for="education">Education</label>
@@ -138,11 +148,13 @@
                 </div>
                 <div class="form__input">
                     <label for="holderName">Account Holder Name<span>*</span></label>
-                    <input required type="text" placeholder="Enter Account Holder Name" name="holderName" id="holderName">
+                    <input required type="text" placeholder="Enter Account Holder Name" name="holderName"
+                        id="holderName">
                 </div>
                 <div class="form__input">
                     <label for="number">Account Number<span>*</span></label>
-                    <input required type="text" pattern="^[0-9+\s]*$" placeholder="Enter Account Number" name="number" id="number">
+                    <input required type="text" pattern="^[0-9+\s]*$" placeholder="Enter Account Number" name="number"
+                        id="number">
                 </div>
                 <div class="form__input">
                     <label for="IFSCCode">IFSC Code<span>*</span></label>
@@ -165,7 +177,7 @@
 
         <!-- Section 2 -->
 
-        <section class="register__section hide__section" data-registrationId="1">
+        <!-- <section class="register__section hide__section" data-registrationId="1">
 
             <div class="register__head">
                 <div class="head__main">
@@ -183,7 +195,7 @@
                 </div>
                 <h2>OTP Verification</h2>
             </div>
-            
+
             <div class="register__confirm">
                 <div class="confirm__icon">
                     <ion-icon name="chatbox-ellipses"></ion-icon>
@@ -193,13 +205,14 @@
                     <h3>An OTP has been sent to Registered Phone Number</h3>
                     <div class="form__input">
                         <label for="otp">OTP (One Time Password)<span>*</span></label>
-                        <input required type="text" pattern="\d{6}" maxlength="6" title="OTP is of 6 Digits. Provide valid OTP." placeholder="Enter OTP" name="otp" id="otp">
+                        <input required type="text" pattern="\d{6}" maxlength="6"
+                            title="OTP is of 6 Digits. Provide valid OTP." placeholder="Enter OTP" name="otp" id="otp">
                     </div>
                     <button title="Verify OTP" type="submit" id="otpSubmitBtn">Verify OTP</button>
                 </form>
             </div>
-        
-        </section>
+
+        </section> -->
 
         <!-- Section 2 -->
 
@@ -215,7 +228,8 @@
                 <div class="register__progress">
                     <span title="Fill in Details" class="section__done"><ion-icon name="pencil"></ion-icon></span>
                     <div class="seperator"></div>
-                    <span title="Confirm Email" class="section__done"><ion-icon name="chatbox-ellipses"></ion-icon></span>
+                    <span title="Confirm Email" class="section__done"><ion-icon
+                            name="chatbox-ellipses"></ion-icon></span>
                     <div class="seperator"></div>
                     <span title="Upload Documents"><ion-icon name="documents"></ion-icon></span>
                     <div class="seperator"></div>
@@ -234,7 +248,8 @@
                             <p>(PNG, JPEG, SVG, PDF only)</p>
                             <p id="msg__show">1 File Selected!</p>
                         </label>
-                        <input type="file" onchange="selectedFile(event, 'idF')" id="idCardF" name="aadharFront"  accept=".jpg, .png, .svg, .jpeg, .pdf">
+                        <input type="file" onchange="selectedFile(event, 'idF')" id="idCardF" name="aadharFront"
+                            accept=".jpg, .png, .svg, .jpeg, .pdf">
                     </div>
                     <div class="form__upload">
                         <label id="idB" for="idCardB">
@@ -243,7 +258,8 @@
                             <p>(PNG, JPEG, SVG, PDF only)</p>
                             <p id="msg__show">1 File Selected!</p>
                         </label>
-                        <input type="file" id="idCardB" onchange="selectedFile(event, 'idB')" name="aadharBack"  accept=".jpg, .png, .svg, .jpeg, .pdf">
+                        <input type="file" id="idCardB" onchange="selectedFile(event, 'idB')" name="aadharBack"
+                            accept=".jpg, .png, .svg, .jpeg, .pdf">
                     </div>
                 </div>
 
@@ -256,7 +272,8 @@
                             <p>(PNG, JPEG, SVG only)</p>
                             <p id="msg__show">1 File Selected!</p>
                         </label>
-                        <input type="file" id="uniformPic1" onchange="selectedFile(event, 'uni1')" name="withUniform"  accept=".jpg, .png, .svg, .jpeg">
+                        <input type="file" id="uniformPic1" onchange="selectedFile(event, 'uni1')" name="withUniform"
+                            accept=".jpg, .png, .svg, .jpeg">
                     </div>
                     <div class="form__upload">
                         <label id="uni2" for="uniformPic2">
@@ -265,7 +282,8 @@
                             <p>(PNG, JPEG, SVG only)</p>
                             <p id="msg__show">1 File Selected!</p>
                         </label>
-                        <input type="file" id="uniformPic2" onchange="selectedFile(event, 'uni2')" name="withUniform"  accept=".jpg, .png, .svg, .jpeg">
+                        <input type="file" id="uniformPic2" onchange="selectedFile(event, 'uni2')" name="withUniform"
+                            accept=".jpg, .png, .svg, .jpeg">
                     </div>
                     <div class="form__upload">
                         <label id="uni3" for="uniformPic3">
@@ -274,7 +292,8 @@
                             <p>(PNG, JPEG, SVG only)</p>
                             <p id="msg__show">1 File Selected!</p>
                         </label>
-                        <input type="file" id="uniformPic3" name="withUniform" onchange="selectedFile(event, 'uni3')"  accept=".jpg, .png, .svg, .jpeg">
+                        <input type="file" id="uniformPic3" name="withUniform" onchange="selectedFile(event, 'uni3')"
+                            accept=".jpg, .png, .svg, .jpeg">
                     </div>
                 </div>
 
@@ -287,7 +306,8 @@
                             <p>(PNG, JPEG, SVG only)</p>
                             <p id="msg__show">1 File Selected!</p>
                         </label>
-                        <input type="file" onchange="selectedFile(event, 'wuni1')" id="withoutUniformPic1" name="withoutUniform"  accept=".jpg, .png, .svg, .jpeg">
+                        <input type="file" onchange="selectedFile(event, 'wuni1')" id="withoutUniformPic1"
+                            name="withoutUniform" accept=".jpg, .png, .svg, .jpeg">
                     </div>
                     <div class="form__upload">
                         <label id="wuni2" for="withoutUniformPic2">
@@ -296,7 +316,8 @@
                             <p>(PNG, JPEG, SVG only)</p>
                             <p id="msg__show">1 File Selected!</p>
                         </label>
-                        <input type="file" onchange="selectedFile(event, 'wuni2')" id="withoutUniformPic2" name="withoutUniform"  accept=".jpg, .png, .svg, .jpeg">
+                        <input type="file" onchange="selectedFile(event, 'wuni2')" id="withoutUniformPic2"
+                            name="withoutUniform" accept=".jpg, .png, .svg, .jpeg">
                     </div>
                     <div class="form__upload">
                         <label id="wuni3" for="withoutUniformPic3">
@@ -305,13 +326,16 @@
                             <p>(PNG, JPEG, SVG only)</p>
                             <p id="msg__show">1 File Selected!</p>
                         </label>
-                        <input type="file" onchange="selectedFile(event, 'wuni3')" id="withoutUniformPic3" name="withoutUniform"  accept=".jpg, .png, .svg, .jpeg">
+                        <input type="file" onchange="selectedFile(event, 'wuni3')" id="withoutUniformPic3"
+                            name="withoutUniform" accept=".jpg, .png, .svg, .jpeg">
                     </div>
                 </div>
 
                 <div class="check__terms">
                     <input type="checkbox" id="terms" name="terms" required>
-                    <label for="terms">By Registering you are agreeing to our <a target="_blank" rel="noopener noreferrer" href="terms.html" title="Terms & Conditions">Terms & Conditions</a></label>
+                    <label for="terms">By Registering you are agreeing to our <a target="_blank"
+                            rel="noopener noreferrer" href="terms.html" title="Terms & Conditions">Terms &
+                            Conditions</a></label>
                 </div>
 
                 <div class="form__options">
@@ -319,7 +343,7 @@
                 </div>
 
             </form>
-        
+
         </section>
 
         <!-- Section 3 -->
@@ -336,7 +360,8 @@
                 <div class="register__progress">
                     <span title="Fill in Details" class="section__done"><ion-icon name="pencil"></ion-icon></span>
                     <div class="seperator"></div>
-                    <span title="Confirm Email" class="section__done"><ion-icon name="chatbox-ellipses"></ion-icon></span>
+                    <span title="Confirm Email" class="section__done"><ion-icon
+                            name="chatbox-ellipses"></ion-icon></span>
                     <div class="seperator"></div>
                     <span title="Upload Documents" class="section__done"><ion-icon name="documents"></ion-icon></span>
                     <div class="seperator"></div>
@@ -344,12 +369,13 @@
                 </div>
                 <h2>Verifying Details</h2>
             </div>
-            
+
             <div class="register__confirm">
                 <span>🧐</span>
-                <p>Our team is validating your details. Will send you an email to you're registered Mail ID as soon as we are done verifying.</p>
+                <p>Our team is validating your details. Will send you an email to you're registered Mail ID as soon as
+                    we are done verifying.</p>
             </div>
-        
+
         </section>
 
         <!-- Section 4 -->
@@ -366,35 +392,38 @@
                 <div class="register__progress">
                     <span title="Fill in Details" class="section__done"><ion-icon name="pencil"></ion-icon></span>
                     <div class="seperator"></div>
-                    <span title="Confirm Email" class="section__done"><ion-icon name="chatbox-ellipses"></ion-icon></span>
+                    <span title="Confirm Email" class="section__done"><ion-icon
+                            name="chatbox-ellipses"></ion-icon></span>
                     <div class="seperator"></div>
-                    <span title="Verifying Details" class="section__done"><ion-icon name="shield-checkmark"></ion-icon></span>
+                    <span title="Verifying Details" class="section__done"><ion-icon
+                            name="shield-checkmark"></ion-icon></span>
                     <div class="seperator"></div>
                     <span title="Upload Documents" class="section__done"><ion-icon name="documents"></ion-icon></span>
                 </div>
                 <h2>Thanks For Register!</h2>
             </div>
-            
+
             <div class="register__confirm">
                 <span>🥳</span>
-                <p>We respect your patience. We're glad that you've joined with Us. Welcome to our <span>Siva Group Family.</span></p>
+                <p>We respect your patience. We're glad that you've joined with Us. Welcome to our <span>Siva Group
+                        Family.</span></p>
                 <p>Our Service Person will contact you soon. Keep you're registered contact number with you.</p>
             </div>
-        
+
         </section>
 
         <!-- Section 5 -->
-    
+
     </main>
 
 
     <!-- Scripts -->
 
     <script src="registration.js" defer></script>
-    
+
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    
+
     <!-- Scripts -->
 
     <!-- Toastify -->
@@ -402,6 +431,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
     <!-- Toastify -->
-    
+
 </body>
+
 </html>
