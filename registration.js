@@ -1,4 +1,4 @@
-const SERVER_HOST_URL = "http://manpower.backend.coffeecodes.in";
+const SERVER_HOST_URL = "https://manpowerpro.elitceler.com";
 
 // 1. Getting Current Section
 
