@@ -1,4 +1,4 @@
-const SERVER_HOST_URL = 'https://manpowerpro.elitceler.com';
+const SERVER_HOST_URL = 'http://ec2-65-0-97-119.ap-south-1.compute.amazonaws.com:4005';
 
 // 1. Getting Current Section
 
